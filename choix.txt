@@ -1,0 +1,13 @@
+* Le constructeur de classe Unite prend enum Caracteristique comme Unite :
+	Unite(Caracteristique)
+* Joueur a un attribut : Jeu 
+* Les trois Actions se fait dans la classe Joueur : 
+	Pseudo : 
+		distances := Utilisation STL pour trier la distances entre des unites
+		for i := 0 -> 3 :
+			if i = 0 :
+				Verifie que les unites sont joues dans l'ordre (plus proche -> 2e -> 3e par exemple)
+			else :
+				Inverse
+			
+* Comment reconnaitre qu'une Unite appartient a qui : attribut : joueur
