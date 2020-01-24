@@ -1,0 +1,49 @@
+#ifndef JEU_H
+#define JEU_H
+
+#include "Joueur.hpp"
+#include "Unite.hpp"
+
+class Jeu {
+	private :
+		Unite[] terrain;
+		Joueur j1;
+		Joueur j2;
+	public :
+		// Constructeur 
+		Jeu();
+		// Destructeur 
+		~Jeu();
+
+		/*
+		 * Deroulement du jeu 
+		 */
+		void deroulement();
+		/*
+		 * Renvoyer vrai si la case est libre 
+		 */
+		bool estLibreCase(...);
+
+		/*
+		 * Renvoyer l'index de l'unite 
+		 */
+		bool getIndex(Unite& u);
+
+		/*
+		 * Renvoyer l'unite d'un joueur
+		 */
+		Unite[] getUnites(Joueur j);	
+
+		/*
+		 * Ajouter dans le terrain une unite 
+		 */
+		void addUnite(Uniter u);
+
+		/*
+		 * Afficher le terrain
+		 */
+		void afficher();
+
+}
+
+#endif
