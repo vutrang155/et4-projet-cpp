@@ -6,18 +6,40 @@ enum Caracteristique {
 };
 
 class Unite {
+	
+	public :
+		static int currentId = 0;
+	
 	private :
+		int id;
 		Joueur joueur;
 		Caracteristique c;
 		int hp;
 		int att;
 		int p;
+		
+		
 	public :
-		Unite(joueur);
+		Unite(Joueur parJoueur);
 
 		/**
 		 * Enlever les points de vie de ce joueur
 		 * param :	a : points d'attaque de l'enemi
 		 **/
 		void estAttaque(int);
+		
+	public :
+		int getId();
+		Joueur getJoueur();
+		Caracteristique getC();
+		int getHp();
+		int getAtt();
+		int getP();
+		
+	public :
+		void setJoueur(Joueur parJoueur);
+		void setC(Caracteristique parC);
+		void setHp(int parHp);
+		void setAtt(int parAtt);
+		void setP(int parP);
 }
