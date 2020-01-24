@@ -11,3 +11,10 @@
 				Inverse
 			
 * Comment reconnaitre qu'une Unite appartient a qui : attribut : joueur
+
+* AI :
+** La fonction jouer() :
+	Classer par priorite : attaquer puis avancer : Si une unite ne peut attaquer, il va avancer. Si il ne peut rien faire (i.e il est devant 
+** Achat :
+	l'A.I achete le plus cher dans sa capacite
+

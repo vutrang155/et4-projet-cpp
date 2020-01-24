@@ -1,4 +1,4 @@
-enum Characteristique {
+enum Caracteristique {
 	Fantassin,
 	Archer,
 	Catapulte,
@@ -8,7 +8,7 @@ enum Characteristique {
 class Unite {
 	private :
 		Joueur joueur;
-		Characteristique c;
+		Caracteristique c;
 		int hp;
 		int att;
 		int p;
