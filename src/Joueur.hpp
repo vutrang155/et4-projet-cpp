@@ -1,10 +1,18 @@
+enum PositionBase {
+	Gauche,
+	Droite
+};
+
+
 class Joueur {
 	private :
+		int jeu
 		int hp;
 		int argent;
+		PositionBase positionBase;
 		
 	public :
-		Joueur();
+		Joueur(Jeu& parJeu, PositionBase parPositionBase);
 		
 	
 	public :
@@ -18,6 +26,7 @@ class Joueur {
 	public :
 		int getHp();
 		int getArgent();
+		PositionBase getPositionBase();
 		
 	public : 
 		void setHp();
