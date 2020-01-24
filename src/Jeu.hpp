@@ -1,6 +1,7 @@
 #ifndef JEU_H
 #define JEU_H
 
+#include <string.h>
 #include "Joueur.hpp"
 #include "Unite.hpp"
 
@@ -27,12 +28,16 @@ class Jeu {
 		/*
 		 * Renvoyer l'index de l'unite 
 		 */
-		bool getIndex(Unite& u);
+		Unite &getUnite(int i);
 
+		/*
+		 * Renvoyer l'index de l'unite 
+		 */
+		int getIndex(Unite& u);
 		/*
 		 * Renvoyer l'unite d'un joueur
 		 */
-		Unite[] getUnites(Joueur j);	
+		&Unite[] getUnites(Joueur j);	
 
 		/*
 		 * Ajouter dans le terrain une unite 
@@ -42,8 +47,9 @@ class Jeu {
 		/*
 		 * Afficher le terrain
 		 */
-		void afficher();
+		string afficher()
 
+		friend &ostream operator<<(ostrem &os, const Jeu& jeu); 
 }
 
 #endif

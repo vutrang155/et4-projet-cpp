@@ -1,4 +1,8 @@
 #include "Jeu.hpp"
+#include <iostream>
+#include <array>
+
+#define TAILLE_TERRAIN 12
 
 // Constructeur 
 Jeu::Jeu() {
@@ -21,13 +25,13 @@ bool Jeu::estLibreCase(...) {
 /*
  * Renvoyer l'index de l'unite 
  */
-bool Jeu::getIndex(Unite& u) {
+int Jeu::getIndex(Unite& u) {
 }
 
 /*
  * Renvoyer l'unite d'un joueur
  */
-Unite[] Jeu::getUnites(Joueur j){
+&Unite[] Jeu::getUnites(Joueur j){
 }	
 
 
@@ -40,6 +44,25 @@ void Jeu::addUnite(Uniter u){
 /*
  * Afficher le terrain
  */
-void Jeu::afficher(){
+string Jeu::afficher(){
+	&Unite[] u1, u2; 
+	string ret = "|";
 
+	u1 = getUnites(j1);
+	u2 = getUnites(j2);
+	for (int i = 0; i < TAILLE_TERRAIN; i++){
+		ret += "|\t";
+		ret += terrain.getJoueur() == j1 ? j1+"." : j2+".";
+		ret += terrain.getId(); 
+		ret += "\t|";
+	}
+	ret += "|\n";
+	ret += "Joueur 1 : \n";
+	for (int i = 0; i < sizeof(u1); i++) {
+			g
+	}	
 }
+
+&ostream operator<<(ostrem &os, const Jeu& jeu) {
+		os << afficher()
+}	
