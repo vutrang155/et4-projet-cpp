@@ -16,11 +16,11 @@ class Unite {
 		Caracteristique c;
 		int hp;
 		int att;
-		int p;
+		int portee;
 		
 		
 	public :
-		Unite(Joueur parJoueur);
+		Unite(Joueur parJoueur, Caracteristique parC);
 
 		/**
 		 * Enlever les points de vie de ce joueur
@@ -34,12 +34,12 @@ class Unite {
 		Caracteristique getC();
 		int getHp();
 		int getAtt();
-		int getP();
+		int getPortee();
 		
 	public :
 		void setJoueur(Joueur parJoueur);
 		void setC(Caracteristique parC);
 		void setHp(int parHp);
 		void setAtt(int parAtt);
-		void setP(int parP);
+		void setPortee(int parPortee);
 }
