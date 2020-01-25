@@ -24,7 +24,7 @@ void Jeu::deroulement(){
 /*
  * Renvoyer vrai si la case est libre 
  */
-bool Jeu::estLibreCase(...) {
+bool Jeu::estLibreCase(int indexCase) {
 }
 
 /*
@@ -45,6 +45,31 @@ int Jeu::getIndex(Unite& u) {
  */
 void Jeu::addUnite(Uniter u){
 }
+
+
+void Jeu::deplacerUnite(Unite &u, PositionBase positionBase)
+{
+	int indexUnite = getIndex(u);
+	
+	//Unité du joueur à gauche
+	if((srtcmp(positionBase,"Gauche") && estLibreCase(indexUnite + 1)))
+	{
+		terrain[indexUnite + 1] = terrain[indexUnite];
+
+	}
+
+	//Unite du joueur à droite
+	else if(srtcmp(positionBase,"Droite") && estLibreCase(indexUnite - 1) 
+	{
+		terrain[indexUnite - 1] = terrain[indexUnite];
+
+	}
+
+	//PEUT-ETRE A MODIFIER
+		terrain[indexUnite] = null;
+
+}
+
 
 /*
  * Afficher le terrain
@@ -71,3 +96,6 @@ string Jeu::afficher(){
 &ostream operator<<(ostrem &os, const Jeu& jeu) {
 		os << afficher()
 }	
+
+
+
