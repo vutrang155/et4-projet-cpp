@@ -1,61 +1,64 @@
 #include <iostream>
+#include "Unite.hpp"
+#include "Joueur.hpp"
 
 #define PORTEE1 1
 #define PORTEE2 2
 #define PORTEE3 3
 
-Unite::Unite(Joueur parJoueur, Caracteristique parC)
+int Unite::currentId = 0;
+Unite::Unite(Joueur* parJoueur, Caracteristique parC)
 {
-	c = parC;
-	
-	switch(c)
-	{
-		case Fantassin:
-		case SSoldat: 
-			prix = 10;
-			hp = 10;
-			att = 4;
-			portee = PORTEE1;
-			
-		case Archer :
-			prix = 12;
-			hp = 7;
-			att = 3;
-			portee = PORTEE2;
-		
-		case Catapulte :
-			prix = 22;
-			hp = 12;
-			att = 6;
-			portee = PORTEE3;
+		c = parC;
 
-		default :
-			printf("Caracteristique donnée inexistante");
-			exit(EXIT_FAILURE);
-			
-	}
-	
-	
-	
-	
-	id = currentId;
-	
-	currentId++;
-	
-	
-	joueur = parJoueur;
-	
-	
+		switch(c)
+		{
+				case Fantassin:
+				case SSoldat: 
+						prix = 10;
+						hp = 10;
+						att = 4;
+						portee = PORTEE1;
+
+				case Archer :
+						prix = 12;
+						hp = 7;
+						att = 3;
+						portee = PORTEE2;
+
+				case Catapulte :
+						prix = 22;
+						hp = 12;
+						att = 6;
+						portee = PORTEE3;
+
+				default :
+						printf("Caracteristique donnée inexistante");
+						exit(EXIT_FAILURE);
+
+		}
+
+
+
+
+		id = currentId;
+
+		currentId++;
+
+
+		joueur = parJoueur;
+
+
 }
 
 
 attaque(Unite uatt, Unite udefense)
 {
-	switch(uatt.getC())
-		case
-		
+		/*switch(uatt.getC())
+		  case
 
-	
+
+*/	
 }
 
 
@@ -66,8 +69,8 @@ attaque(Unite uatt, Unite udefense)
 
 void Unite::estAttaque(int valAttaque)
 {
-	hp -= valAttaque;
-	
+		hp -= valAttaque;
+
 }
 
 
@@ -77,66 +80,60 @@ void Unite::estAttaque(int valAttaque)
 
 int Unite::getId()
 {
-	return id;
+		return id;
 }
 
-Joueur Unite::getJoueur()
+Joueur* Unite::getJoueur()
 {
-	return joueur;
+		return joueur;
 }
 
 
 Caracteristique Unite::getC()
 {
-	return c;
+		return c;
 }
 
 
 int Unite::getHp()
 {
-	return hp;
+		return hp;
 }
 
 int Unite::getAtt()
 {
-	return att;
+		return att;
 }
 
 
 int Unite::getPortee()
 {
-	return portee;
+		return portee;
 }
 
 
-
-
-
-
-
-
-void Unite::setJoueur(Joueur parJoueur)
+void Unite::setJoueur(Joueur* parJoueur)
 {
-	joueur = parJoueur;
+		joueur = parJoueur;
 }
 
 
 void Unite::setC(Caracteristique parC)
 {
-	c = parC
+		c = parC
 }
 
 
 void Unite::setHp(int parHp)
 {
-	hp = parHp;
+		hp = parHp;
 }
 
 
 
 void Unite::setAtt(int parAtt)
 {
-	att = parAtt;
+		att = parAtt;
 }
 
 

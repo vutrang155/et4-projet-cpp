@@ -1,6 +1,11 @@
-#include "Jeu.hpp"
 #include <iostream>
+#include <string.h>
 #include <array>
+
+
+#include "Joueur.hpp"
+#include "Jeu.hpp"
+#include "Unite.hpp"
 
 #define TAILLE_TERRAIN 12
 

@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Unite.hpp"
+#include "Joueur.hpp"
 
 Joueur::Joueur()
 {
@@ -61,6 +63,3 @@ void Joueur::setArgent(int parArgent)
 	argent = parArgent;
 }
 
-
-
-}

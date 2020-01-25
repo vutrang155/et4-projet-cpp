@@ -2,8 +2,8 @@
 #define JEU_H
 
 #include <string.h>
-#include "Joueur.hpp"
 #include "Unite.hpp"
+#include "Joueur.hpp"
 
 class Jeu {
 	private :
