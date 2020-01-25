@@ -1,42 +1,47 @@
 #include <iostream>
-#include "Unite.hpp"
+
+#include "Jeu.hpp"
 #include "Joueur.hpp"
+#include "Unite.hpp"
 
 #define PORTEE1 1
 #define PORTEE2 2
 #define PORTEE3 3
 
 int Unite::currentId = 0;
-Unite::Unite(Joueur* parJoueur, Caracteristique parC)
+Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 {
-		c = parC;
+		caracteristique = parCaracteristique;
 
-		switch(c)
+		if(strcmp(parCaracteristique, "Fantassin"))
 		{
-				case Fantassin:
-				case SSoldat: 
-						prix = 10;
-						hp = 10;
-						att = 4;
-						portee = PORTEE1;
-
-				case Archer :
-						prix = 12;
-						hp = 7;
-						att = 3;
-						portee = PORTEE2;
-
-				case Catapulte :
-						prix = 22;
-						hp = 12;
-						att = 6;
-						portee = PORTEE3;
-
-				default :
-						printf("Caracteristique donnée inexistante");
-						exit(EXIT_FAILURE);
-
+			prix = 10;
+			hp = 10;
+			att = 4;
+			portee = PORTEE1;
 		}
+
+		else if(strcmp(parCaracteristique, "Archer"))
+		{
+			prix = 12;
+			hp = 7;
+			att = 3;
+			portee = PORTEE2;
+		}
+
+		else if(strcmp(parCaracteristique, "Catapulte"))
+		{
+			prix = 22;
+			hp = 12;
+			att = 6;
+			portee = PORTEE3;
+		}
+
+		else
+		{
+			cout << "L'unité SuperSoldat ni aucune autre ne peut pas être ajoutée";
+			exit(EXIT_FAILURE);
+		}		
 
 
 
@@ -64,9 +69,6 @@ attaque(Unite uatt, Unite udefense)
 
 
 
-
-
-
 void Unite::estAttaque(int valAttaque)
 {
 		hp -= valAttaque;
@@ -89,7 +91,7 @@ Joueur* Unite::getJoueur()
 }
 
 
-Caracteristique Unite::getC()
+string Unite::getCaracteristique()
 {
 		return c;
 }
@@ -118,9 +120,9 @@ void Unite::setJoueur(Joueur* parJoueur)
 }
 
 
-void Unite::setC(Caracteristique parC)
+void Unite::setC(string parCaracteristique)
 {
-		c = parC
+		caracteristique = parCaracteristique
 }
 
 

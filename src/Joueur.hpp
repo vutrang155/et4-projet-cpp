@@ -1,34 +1,40 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
-#include "Unite.hpp"
-enum PositionBase {
-	Gauche,
-	Droite
-};
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+class Jeu;
+class Unite;
+
 
 
 class Joueur {
 	private :
-		int jeu
+		int jeu;
 		int hp;
 		int argent;
-		PositionBase positionBase;
+		string positionBase;
 		
 	public :
 		Joueur();
 
-		Joueur(Jeu& parJeu, PositionBase parPositionBase);
+		Joueur(Jeu* parJeu, string parPositionBase);
 		
 	
 	public :
 		void jouer();
-		bool avancer(Unite& u);
-		bool attaquer(Unite& u);
-		bool acheter(Caracteristique c);
+		bool avancer(Unite* u);
+		bool acheter(string caracteristique);
+		void estAttaque(int valAttaque);
+		void augmenterArgent(int parArgent);
+		void diminuerArgent(int parArgent);
 		
 		int getHp();
 		int getArgent();
-		PositionBase getPositionBase();
+		string getPositionBase();
 		
 		void setHp();
 		void setArgent();

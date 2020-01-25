@@ -1,18 +1,27 @@
-#include <iostream>
-#include "Unite.hpp"
-#include "Joueur.hpp"
 
+
+
+#include "Joueur.hpp"
 #include "Jeu.hpp"
+#include "Unite.hpp"
+
+
 
 using namespace std;
 
-Joueur::Joueur(Jeu& parJeu, PositionBase parPositionBase)
+Joueur::Joueur(Jeu* parJeu, string parPositionBase)
 {
+	if(parPositionBase.compare("Gauche") != 0 && parPositionBase.compare("Droite") != 0)
+	{
+		cout << "On ne peut choisir qu'un joueur à Gauche ou à Droite sur le terrain" << endl;
+		exit(EXIT_FAILURE);
+	}
+
 	positionBase = parPositionBase;
 	
 	jeu = parJeu; 
 
-	hp = 50;
+	hp = POINTS_DE_VIE_JOUEUR_DEBUT;
 	
 	argent = 8;
 }
@@ -26,7 +35,7 @@ void Joueur::jouer()
 }
 
 
-bool Joueur::avancer(Unite& u)
+bool Joueur::avancer(Unite* u)
 {
 
 	jeu.deplacerUnite(u, positionBase);
@@ -34,14 +43,25 @@ bool Joueur::avancer(Unite& u)
 
 }
 
-bool Joueur::attaquer(Unite& u)
+
+
+bool Joueur::acheter(string caracteristique)
 {
 	
 }
 
-bool Joueur::acheter(Caracteristique c)
+
+bool Joueur::estAttaque(int valAttaque)
 {
-	
+	hp -= valAttaque;
+
+	if(hp <= 0)
+	{
+		return true;
+	}
+
+	return false;
+
 }
 
 
@@ -58,7 +78,7 @@ int Joueur::getArgent()
 	return argent;
 }
 
-PositionJoueur Joueur::getPositionBase()
+string Joueur::getPositionBase()
 {
 	return positionBase;
 }
@@ -73,8 +93,13 @@ void Joueur::setHp(int parHp)
 	hp = parHp;
 }
 
-void Joueur::setArgent(int parArgent)
+void Joueur::augmenterArgent(int parArgent)
 {
-	argent = parArgent;
+	argent += parArgent;
+}
+
+void Joueur::diminuerArgent(int parArgent)
+{
+	argent -= parArgent;
 }
 

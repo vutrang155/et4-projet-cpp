@@ -1,6 +1,12 @@
 #ifndef UNITE_H
 #define UNITE_H
 
+#include <string.h>
+
+using namespace std;
+
+
+
 /*
  * #include "Joueur"
  *
@@ -9,12 +15,18 @@
  */
 class Joueur;
 
+
+/* 
+
+ON NE PEUT PAS COMPARER DES ENUM AVEC DES STRING
+
 enum Caracteristique {
 		Fantassin,
 		Archer,
 		Catapulte,
-		SSoldat
+		SuperSoldat
 };
+*/
 
 class Unite {
 
@@ -23,7 +35,7 @@ class Unite {
 		private :
 				int id;
 				Joueur* joueur;
-				Caracteristique c;
+				string caracteristique;
 				int hp;
 				int att;
 				int portee;
@@ -31,7 +43,7 @@ class Unite {
 
 
 		public :
-				Unite(Joueur* parJoueur, Caracteristique parC);
+				Unite(Joueur* parJoueur, string parCaracteristique);
 				/**
 				 * Enlever les points de vie de ce joueur
 				 * param :	a : points d'attaque de l'enemi
@@ -43,7 +55,7 @@ class Unite {
 				 */
 				int getId();
 				Joueur* getJoueur();
-				Caracteristique getC();
+				string getCaracteristique();
 				int getHp();
 				int getAtt();
 				int getPortee();
@@ -52,7 +64,7 @@ class Unite {
 				 * Setters
 				 */
 				void setJoueur(Joueur parJoueur);
-				void setC(Caracteristique parC);
+				void setC(string parCaracteristique);
 				void setHp(int parHp);
 				void setAtt(int parAtt);
 				void setPortee(int parPortee);

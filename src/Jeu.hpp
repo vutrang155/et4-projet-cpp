@@ -1,13 +1,19 @@
 #ifndef JEU_H
 #define JEU_H
 
+#include <iostream>
 #include <string.h>
-#include "Unite.hpp"
+#include <vector>
+
 #include "Joueur.hpp"
+#include "Unite.hpp"
+
+
+using namespace std;
 
 class Jeu {
 	private :
-		Unite[] terrain;
+		Unite** terrain;
 		Joueur j1;
 		Joueur j2;
 	public :
@@ -23,33 +29,44 @@ class Jeu {
 		/*
 		 * Renvoyer vrai si la case est libre 
 		 */
-		bool estLibreCase(...);
+		bool estLibreCase(int indexCase);
 
 		/*
 		 * Renvoyer l'index de l'unite 
 		 */
-		Unite &getUnite(int i);
+		Unite* getUnite(int i);
 
 		/*
 		 * Renvoyer l'index de l'unite 
 		 */
-		int getIndex(Unite& u);
+		int getIndex(Unite* u);
 		/*
 		 * Renvoyer l'unite d'un joueur
 		 */
-		&Unite[] getUnites(Joueur j);	
+		vector<Unite*> getUnites(Joueur* j);	
 
 		/*
 		 * Ajouter dans le terrain une unite 
 		 */
-		void addUnite(Uniter u);
+		void addUnite(Unite* u, int caseTerrain);
 
 		/*
 		 * Afficher le terrain
 		 */
-		string afficher()
+		string afficher();
 
-		friend &ostream operator<<(ostrem &os, const Jeu& jeu); 
-}
+
+		void avancer(Unite* u, string direction);
+
+		bool attaquer(Unite* u, string direction, bool isAction1Effectueee);
+
+		string getDirection(Joueur* j);
+
+		void tour(Joueur* j);
+
+		
+};
+
+ostream& operator<<(ostream& os, const Jeu& jeu) ; 
 
 #endif
