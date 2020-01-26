@@ -35,7 +35,7 @@ Jeu::~Jeu()
  */
 void Jeu::deroulement()
 {
-
+    
 
     achatUnite(jGauche);
     achatUnite(jDroite);
@@ -43,29 +43,18 @@ void Jeu::deroulement()
 
     for(int cpt = 0; cpt < NOMBRE_TOURS; cpt++)
     {
+        achatUnite(jGauche);
+
         tour(jGauche);
         tour(jDroite);
-        if(jGauche->getHp() <= 0 || jDroite->getHp() <= 0) {
+
+        if(jGauche->getHp() <= 0 || jDroite->getHp() <= 0) 
+        {
             break;
         }
     }
 
-
-
-
-    if(jGauche->getHp() <= 0)
-    {
-        cout << "Le joueur à gauche n'a plus de point de vie" << endl;
-		cout << "Le joueur à droite a gagné la partie" << endl;
-    }
-
-    else if(jDroite->getHp() <= 0)
-    {
-        cout << "Le joueur à droite n'a plus de point de vie" << endl;
-		cout << "Le joueur à gauche a gagné la partie" << endl;
-    }
-
-    else
+    if(jGauche->getHp() > 0 && jDroite->getHp() > 0) 
     {
         cout << "Match nul" << endl;
     }
@@ -352,15 +341,16 @@ void Jeu::tour(Joueur* j)
     }
     std::cout << afficher();
 
-    if (jGauche->getHp() > 0 && jDroite->getHp() > 0){
+    if (jGauche->getHp() > 0 && jDroite->getHp() > 0 && getUnites(j).size() < 3){
         achatUnite(j);
     }
     if (jGauche->getHp() <= 0) {
-        std::cout << "Jeu terminé, le joueur à gauche a gagné";
+        std::cout << "Jeu terminé, le joueur à droite a gagné" << endl;
     }
     if (jDroite->getHp() <= 0) {
-        std::cout << "Jeu terminé, le joueur à droite a gagné";
+        std::cout << "Jeu terminé, le joueur à gauche a gagné" << endl;
     }
+
 
 }
 
@@ -572,7 +562,7 @@ bool Jeu::avancer(Unite* u)
 
     int indexUnite = getIndex(u);
 
-    if(u->getJoueur()->getPositionBase() == "Gauche" && estLibreCase(indexUnite + 1) && indexUnite != TAILLE_TERRAIN - 2)
+    if(u->getJoueur()->getPositionBase() == "Gauche" && indexUnite != TAILLE_TERRAIN - 2 && estLibreCase(indexUnite + 1))
     {
         terrain[indexUnite] = NULL;
         terrain[indexUnite + 1] = u;
@@ -580,7 +570,7 @@ bool Jeu::avancer(Unite* u)
         return true;
 
     }
-    else if(u->getJoueur()->getPositionBase() == "Droite" && estLibreCase(indexUnite - 1) && indexUnite != 1)
+    else if(u->getJoueur()->getPositionBase() == "Droite" && indexUnite != 1 && estLibreCase(indexUnite - 1))
     {
         terrain[indexUnite] = NULL;
         terrain[indexUnite - 1] = u;

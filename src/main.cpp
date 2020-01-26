@@ -33,7 +33,6 @@ void testAvancer();
 void testAttaquerFantassin();
 void testAttaquerCatapulte();
 void testAchat();
-void testExit();
 
 
 int main()
@@ -56,11 +55,8 @@ int main()
 
 }
 
-void testExit()
-{
-    cout << "test testExit()" << endl;
-    exit(0);
-}
+
+
 
 void testAchat()
 {
