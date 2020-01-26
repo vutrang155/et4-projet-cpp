@@ -10,13 +10,12 @@
 
 using namespace std;
 
-/*ostream& operator<<(ostream& os, Jeu& jeu)
+ostream& operator<<(ostream& os, Jeu& jeu) 
 {
 	os << jeu.afficher();
 
 	return os;
-}
-*/
+}	
 
 ostream& operator<<(ostream& os, Unite& u) {
 		os << u.getCaracteristique() << " " << u.getId();
@@ -88,7 +87,6 @@ int main()
 */
 
 
-	cout << jeu->afficher();
 
 	return 0;
 }

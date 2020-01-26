@@ -74,16 +74,9 @@ class Jeu {
 
 		void tour(Joueur* j);
 
-		//friend ostream& operator<<(ostream& os, Jeu& jeu);
 		
 };
 
-/*
-ostream& operator<<(ostream& os, Jeu& jeu)
-{
-    os << jeu.afficher();
-    return os;
-}
- */
+ostream& operator<<(ostream& os, const Jeu& jeu) ; 
 
 #endif

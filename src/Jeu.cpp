@@ -204,34 +204,35 @@ void Jeu::addUnite(Unite* u, int caseTerrain)
 }
 
 
-/*
 string Jeu::afficher()
 {
 	return "Test affichage du jeu";
 }
- */
 
 /*
  * Afficher le terrain
  */
+ /*
 string Jeu::afficher(){
+	&Unite[] u1, u2; 
 	string ret = "|";
-	vector<Unite*> u1 = getUnites(j1);
-	vector<Unite*> u2 = getUnites(j2);
+
+	u1 = getUnites(j1);
+	u2 = getUnites(j2);
 	for (int i = 0; i < TAILLE_TERRAIN; i++){
 		ret += "|\t";
-		if (terrain[i]->getJoueur() == j1)
-		    ret += "j1.";
-		else
-            ret += "j2.";
-		ret += terrain[i]->getId();
+		ret += terrain.getJoueur() == j1 ? j1+"." : j2+".";
+		ret += terrain.getId(); 
 		ret += "\t|";
 	}
 	ret += "|\n";
 	ret += "Joueur 1 : \n";
-	return ret;
-}
+	for (int i = 0; i < sizeof(u1); i++) {
+			
+	}	
 
+}
+*/
 
 
 Unite* Jeu::getUnite(int i)
