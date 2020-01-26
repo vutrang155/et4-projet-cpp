@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <array>
+#include <vector>
 
 #include "Jeu.hpp"
 #include "Unite.hpp"
@@ -10,7 +11,7 @@
 
 #define TAILLE_TERRAIN 12
 #define NOMBRE_TOURS 50
-#define POINTS_DE_VIE_JOUEUR_DEBUT 50
+
 
 using namespace std;
 
@@ -59,7 +60,7 @@ string Jeu::getDirection(Joueur* j)
 	
 }
 
-
+/*
 void Jeu::tour(Joueur* j)
 {
 	string positionBase = j->getPositionBase();
@@ -76,20 +77,20 @@ void Jeu::tour(Joueur* j)
 		attaquer(u, direction, action1effectuee);
 	
 
-	}
-
-
-	
+	}	
 	
 }
 
+*/
 
+/*
 bool Jeu::attaquer(Unite* u, string direction, bool isAction1Effectueee)
 {
+	
 	return true;
 	
 }
-
+*/
 
 void Jeu::avancer(Unite* u, string direction)
 {
@@ -171,13 +172,12 @@ vector<Unite*> Jeu::getUnites(Joueur* j)
 
 	for(int i = 0; i < TAILLE_TERRAIN; i++)
 	{	
-		/*
-		if(terrain[i].getJoueur().getPositionBase().compare(j->getPositionBase()))
-		{
-			
-		}
-		*/
 
+		if(terrain[i]->getJoueur()->getPositionBase().compare(j->getPositionBase()))
+		{
+			unitesJoueur.push_back(terrain[i]);
+		}
+	
 	}
 
 	return unitesJoueur;
@@ -234,6 +234,8 @@ Unite* Jeu::getUnite(int i)
 ostream& operator<<(ostream& os, Jeu& jeu) 
 {
 	os << jeu.afficher();
+
+	return os;
 }	
 
 ostream& operator<<(ostream& os, Unite& u) {
@@ -241,30 +243,7 @@ ostream& operator<<(ostream& os, Unite& u) {
 		os << "HP : " << u.getHp() << endl;
 		os << endl;
 
+		return os;
+
 }	
 
-//FONCTION POUR LES TESTS
-int main()
-{
-	Jeu* jeu = new Jeu();
-
-	Joueur* joueur = new Joueur(jeu,"Gauche");
-
-	
-	Unite* u = new Unite(joueur,"Fantassin");
-	
-
-	jeu->addUnite(u,1);
-
-	cout << "Case 1:"  << *(jeu->getUnite(1));
-
-	jeu->avancer(u,"->");
-
-	printf("L'unité a avancé");
-
-	cout << "Case 1:"  << *(jeu->getUnite(1));
-	cout << "Case 2:"  << *(jeu->getUnite(2));
-
-
-	return 0;
-}

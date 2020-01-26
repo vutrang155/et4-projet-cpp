@@ -18,7 +18,7 @@ Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 {
 		caracteristique = parCaracteristique;
 
-		if(strcmp(parCaracteristique, "Fantassin"))
+		if(parCaracteristique.compare("Fantassin") == 0)
 		{
 			prix = 10;
 			hp = 10;
@@ -26,7 +26,7 @@ Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 			portee = PORTEE1;
 		}
 
-		else if(strcmp(parCaracteristique, "Archer"))
+		else if(parCaracteristique.compare("Archer") == 0)
 		{
 			prix = 12;
 			hp = 7;
@@ -34,7 +34,7 @@ Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 			portee = PORTEE2;
 		}
 
-		else if(strcmp(parCaracteristique, "Catapulte"))
+		else if(parCaracteristique.compare("Catapulte") == 0)
 		{
 			prix = 22;
 			hp = 12;
@@ -62,14 +62,6 @@ Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 }
 
 
-attaque(Unite uatt, Unite udefense)
-{
-		/*switch(uatt.getC())
-		  case
-
-
-*/	
-}
 
 
 
@@ -98,7 +90,7 @@ Joueur* Unite::getJoueur()
 
 string Unite::getCaracteristique()
 {
-		return c;
+		return caracteristique;
 }
 
 
@@ -125,9 +117,9 @@ void Unite::setJoueur(Joueur* parJoueur)
 }
 
 
-void Unite::setC(string parCaracteristique)
+void Unite::setCaracteristique(string parCaracteristique)
 {
-		caracteristique = parCaracteristique
+		caracteristique = parCaracteristique;
 }
 
 

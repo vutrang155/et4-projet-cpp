@@ -1,10 +1,14 @@
-
+#include <iostream>
+#include <string.h>
+#include <array>
 
 
 #include "Joueur.hpp"
 #include "Jeu.hpp"
 #include "Unite.hpp"
 
+
+#define POINTS_DE_VIE_JOUEUR_DEBUT 50
 
 
 using namespace std;
@@ -38,24 +42,18 @@ void Joueur::jouer()
 }
 
 
-bool Joueur::avancer(Unite* u)
-{
-
-	jeu.deplacerUnite(u, positionBase);
 
 
-}
-
-
-
-bool Joueur::acheter(string caracteristique)
+/*
+void Joueur::acheter(string caracteristique)
 {
 	
 }
-
+*/
 
 bool Joueur::estAttaque(int valAttaque)
 {
+	
 	hp -= valAttaque;
 
 	if(hp <= 0)

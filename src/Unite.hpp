@@ -67,7 +67,7 @@ class Unite {
 				 * Setters
 				 */
 				void setJoueur(Joueur* parJoueur);
-				void setC(string parCaracteristique);
+				void setCaracteristique(string parCaracteristique);
 				void setHp(int parHp);
 				void setAtt(int parAtt);
 				void setPortee(int parPortee);

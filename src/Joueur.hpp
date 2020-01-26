@@ -15,7 +15,7 @@ class Unite;
 
 class Joueur {
 	private :
-		int jeu;
+		Jeu* jeu;
 		int hp;
 		int argent;
 		string positionBase;
@@ -28,9 +28,8 @@ class Joueur {
 	
 	public :
 		void jouer();
-		bool avancer(Unite* u);
-		bool acheter(string caracteristique);
-		void estAttaque(int valAttaque);
+		void acheter(string caracteristique);
+		bool estAttaque(int valAttaque);
 		void augmenterArgent(int parArgent);
 		void diminuerArgent(int parArgent);
 		
@@ -38,7 +37,7 @@ class Joueur {
 		int getArgent();
 		string getPositionBase();
 		
-		void setHp();
+		void setHp(int parHp);
 		void setArgent();
 };
 #endif
