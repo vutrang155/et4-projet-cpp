@@ -4,9 +4,9 @@ BUILD		:= ./build
 OBJ_DIR		:= $(BUILD)/o
 APP_DIR 	:= $(BUILD)/apps
 TARGET		:= main
-#SRC := \
-#	$(wildcard src/*.cpp)
-SRC := src/Unite.cpp src/Jeu.cpp src/Joueur.cpp
+SRC := \
+$(wildcard src/*.cpp)
+#SRC := src/Unite.cpp src/Jeu.cpp src/Joueur.cpp
 OBJECTS := $(SRC:%.cpp=$(OBJ_DIR)/%.o) 
 OBJECTS_UNITE := $(SRC:Unite.cpp=$(OBJ_DIR)/Unite.o) 
 

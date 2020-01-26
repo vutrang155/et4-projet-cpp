@@ -1,6 +1,7 @@
 #ifndef UNITE_H
 #define UNITE_H
 
+#include <iostream>
 #include <string.h>
 
 using namespace std;
