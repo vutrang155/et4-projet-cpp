@@ -99,7 +99,7 @@ bool Jeu::avancer(Unite* u)
 	int indexUnite = getIndex(u);
 
 
-	if(u->getJoueur()->getPositionBase() == "Gauche" && estLibreCase(indexUnite + 1) && indexUnite != 10)
+	if(u->getJoueur()->getPositionBase() == "Gauche" && estLibreCase(indexUnite + 1) && indexUnite != TAILLE_TERRAIN - 1)
 	{
 		terrain[indexUnite] = NULL;
 
@@ -119,7 +119,7 @@ bool Jeu::avancer(Unite* u)
 		return true;
 	}
 
-	
+
 	return false;
 
 }
