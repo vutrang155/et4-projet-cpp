@@ -31,13 +31,18 @@ ostream& operator<<(ostream& os, Unite& u) {
 
 void testAvancer();
 void testAttaquer();
+
+
 int main()
 {
     //testAvancer();
-    testAttaquer();
+    //testAttaquer();
     return 0;
 
 }
+
+
+
 void testAvancer() {
     Joueur *joueurGauche = new Joueur("Gauche");
     Joueur *joueurDroite = new Joueur("Droite");
@@ -90,6 +95,8 @@ cout << "Case 2: "  << *(jeu->getUnite(2)) << endl;
 
     cout << jeu->afficher();
 }
+
+/*
 void testAttaquer() {
     Joueur *joueurGauche = new Joueur("Gauche");
     Joueur *joueurDroite = new Joueur("Droite");
@@ -118,3 +125,4 @@ void testAttaquer() {
     cout << "attaque j1.1 -> j2.0\n";
     cout << jeu->afficher();
 }
+*/

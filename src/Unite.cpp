@@ -16,47 +16,47 @@ int Unite::currentId = 0;
 
 Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 {
-		caracteristique = parCaracteristique;
+	caracteristique = parCaracteristique;
 
-		if(parCaracteristique.compare("Fantassin") == 0)
-		{
-			prix = 10;
-			hp = 10;
-			att = 4;
-			portee = PORTEE1;
-		}
+	if(parCaracteristique.compare("Fantassin") == 0)
+	{
+		prix = 10;
+		hp = 10;
+		att = 4;
+		portee = PORTEE1;
+	}
 
-		else if(parCaracteristique.compare("Archer") == 0)
-		{
-			prix = 12;
-			hp = 7;
-			att = 3;
-			portee = PORTEE2;
-		}
+	else if(parCaracteristique.compare("Archer") == 0)
+	{
+		prix = 12;
+		hp = 7;
+		att = 3;
+		portee = PORTEE2;
+	}
 
-		else if(parCaracteristique.compare("Catapulte") == 0)
-		{
-			prix = 22;
-			hp = 12;
-			att = 6;
-			portee = PORTEE3;
-		}
+	else if(parCaracteristique.compare("Catapulte") == 0)
+	{
+		prix = 22;
+		hp = 12;
+		att = 6;
+		portee = PORTEE3;
+	}
 
-		else
-		{
-			cout << "L'unité SuperSoldat ni aucune autre ne peut pas être ajoutée";
-			exit(EXIT_FAILURE);
-		}		
-
-
+	else
+	{
+		cout << "L'unité SuperSoldat ni aucune autre ne peut pas être ajoutée";
+		exit(EXIT_FAILURE);
+	}		
 
 
-		id = currentId;
-
-		currentId++;
 
 
-		joueur = parJoueur;
+	id = currentId;
+
+	currentId++;
+
+
+	joueur = parJoueur;
 
 
 }
@@ -66,52 +66,57 @@ Unite::~Unite() {
 }
 void Unite::estAttaque(int valAttaque)
 {
-		hp -= valAttaque;
+	hp -= valAttaque;
 }
 
 int Unite::getId()
 {
-		return id;
+	return id;
 }
 
 Joueur* Unite::getJoueur()
 {
-		return joueur;
+	return joueur;
 }
 
 
 string Unite::getCaracteristique()
 {
-		return caracteristique;
+	return caracteristique;
 }
 
 
 int Unite::getHp()
 {
-		return hp;
+	return hp;
 }
 
 int Unite::getAtt()
 {
-		return att;
+	return att;
 }
 
 
 int Unite::getPortee()
 {
-		return portee;
+	return portee;
+}
+
+bool Unite::getIsAction1Effectuee()
+{
+	return isAction1Effectuee;
 }
 
 
 void Unite::setJoueur(Joueur* parJoueur)
 {
-		joueur = parJoueur;
+	joueur = parJoueur;
 }
 
 
 void Unite::setCaracteristique(string parCaracteristique)
 {
-		caracteristique = parCaracteristique;
+	caracteristique = parCaracteristique;
 }
 
 void Unite::devenirSuperSoldat() {
@@ -136,6 +141,10 @@ void Unite::setAtt(int parAtt)
 		att = parAtt;
 }
 
+void Unite::setIsAction1Effectuee(bool parIsAction1Effectuee)
+{
+		isAction1Effectuee = parIsAction1Effectuee;
+}
 
 
 

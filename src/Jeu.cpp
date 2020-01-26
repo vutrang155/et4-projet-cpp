@@ -19,14 +19,14 @@ using namespace std;
 // Constructeur 
 Jeu::Jeu(Joueur* j, Joueur* jj)
 {
-    j1 = j;
-    j2 = jj;
+    jGauche = j;
+    jDroite = jj;
 }
 // Destructeur 
 Jeu::~Jeu()
 {
-    delete this->j1;
-    delete this->j2;
+    delete this->jGauche;
+    delete this->jDroite;
 }
 
 /*
@@ -34,22 +34,34 @@ Jeu::~Jeu()
  */
 void Jeu::deroulement()
 {
-	/*
+	
 
-		for(int cpt = 0; cpt < NOMBRE_TOURS; cpt++)
-		{
-			j1.augmenterArgent(8);
-			j2.augmenterArgent(8);
+    for(int cpt = 0; cpt < NOMBRE_TOURS; cpt++)
+    {
+        jGauche->augmenterArgent(8);
+        jDroite->augmenterArgent(8);
 
-			tour("Gauche");
+        tour(jGauche);
 
-			tour("Droite");
+        tour(jDroite);
 
-		}
-		
+    }
+	
+    if(jGauche->getHp() <= 0)
+    {
+        cout << "Le joueur à droite a gagné" << endl;
+    }
 
-	*/
+    else if(jDroite->getHp() <= 0)
+    {
+        cout << "Le joueur à gauche a gagné" << endl;
+    }
 
+    else
+    {
+        cout << "Match nul" << endl;
+    }
+    
 }
 
 string Jeu::getDirection(Joueur* j)
@@ -63,35 +75,128 @@ string Jeu::getDirection(Joueur* j)
 	
 }
 
-/*
+
+
+void Jeu::action1(Unite* u)
+{
+    u->setIsAction1Effectuee(attaquer(u));
+}
+
+
+void Jeu::action2(Unite* u)
+{
+    if(!u->getCaracteristique().compare("Catapulte"))
+    {
+        avancer(u);
+    }
+}
+
+void Jeu::action3(Unite* u)
+{
+    if((u->getCaracteristique().compare("Fantassin") == 0 && u->getIsAction1Effectuee() == false) || u->getCaracteristique().compare("SuperSoldat") == 0)
+    {
+        attaquer(u);
+
+    }
+
+    else if(u->getCaracteristique().compare("Catapulte") == 0 && u->getIsAction1Effectuee() == false)
+    {
+        avancer(u);
+
+    }
+
+}
+
+
 void Jeu::tour(Joueur* j)
 {
 	string positionBase = j->getPositionBase();
 
 	vector<Unite*> unitesJoueur = getUnites(j);
 	
-	string direction = getDirection(j);
 
 
-	for(Unite* u : unitesJoueur)
-	{
-		bool action1effectuee =  attaquer(u, direction, false);	
-		avancer(u,direction);
-		attaquer(u, direction, action1effectuee);
-	
+    //Action 1
+    if(j->getPositionBase().compare("Gauche"))
+    {
+        //De gauche à droite
+        for(int i = 0; i < unitesJoueur.size(); i++)
+        {
+            action1(unitesJoueur[i]);	
+        }	
+        
+    }
+    
+    else
+    {
+        //De droite à gauche
+        for(int i = unitesJoueur.size() - 1; i >= 0 ; i--)
+        {
+            action1(unitesJoueur[i]);	
+        }	
+    }
 
-	}	
+
+
+
+
+    //Action 2
+    if(j->getPositionBase().compare("Gauche"))
+    {
+        //De droite à gauche
+        for(int i = unitesJoueur.size() - 1; i >= 0 ; i--)
+        {
+            action2(unitesJoueur[i]);	
+        }	
+        
+    }
+    
+    else
+    {
+        //De gauche à droite
+        for(int i = 0; i < unitesJoueur.size(); i++)
+        {
+            action2(unitesJoueur[i]);	
+        }	
+    }
+
+
+
+
+    //Action 3
+    if(j->getPositionBase().compare("Gauche"))
+    {
+        //De droite à gauche
+        for(int i = unitesJoueur.size() - 1; i >= 0 ; i--)
+        {
+            action3(unitesJoueur[i]);	
+        }	
+        
+    }
+    
+    else
+    {
+        //De gauche à droite
+        for(int i = 0; i < unitesJoueur.size(); i++)
+        {
+            action3(unitesJoueur[i]);	
+        }	
+    }
+
 	
 }
 
-*/
+
+
+
+
 
 
 // Renvoyer vrai si l'unite attaque
-bool Jeu::attaquer(Unite* u, bool isAction1Effectueee)
+bool Jeu::attaquer(Unite* u)
 {
 
-    if(isAction1Effectueee) {
+    if(u->getIsAction1Effectuee()) {
         int portee = 0; // Declaration de portee de l'unite
         int indexUnite = getIndex(u);
         std::string direction = u->getJoueur()->getPositionBase();
@@ -264,7 +369,7 @@ string Jeu::afficher(){
 	for (int i = 0; i < TAILLE_TERRAIN; i++){
 		ret += "| ";
 		if (terrain[i] != nullptr) { // If not found
-            if (terrain[i]->getJoueur() != j1)
+            if (terrain[i]->getJoueur() != jGauche)
                 ret += "d.";
             else
                 ret += "g.";
@@ -276,11 +381,11 @@ string Jeu::afficher(){
     ret += "|\n";
 
 	// Afficher les informations sur le terrain
-    vector<Unite*> u1 = this->getUnites(j1);
+    vector<Unite*> u1 = this->getUnites(jGauche);
     ret += "Joueur Gauche : \n  $";
-    ret += to_string(j1->getArgent());
+    ret += to_string(jGauche->getArgent());
     ret += "\t";
-    ret += j1->getHp();
+    ret += jGauche->getHp();
     ret += " Hp";
     ret += "\n";
     for (auto u = u1.begin(); u != u1.end(); u++) {
@@ -294,11 +399,11 @@ string Jeu::afficher(){
         ret += "\n\t\tHP : ";
         ret += to_string((*u)->getHp());
     }
-    vector<Unite*> u2 = this->getUnites(j2);
+    vector<Unite*> u2 = this->getUnites(jDroite);
     ret += "\nJoueur Droite: \n  $";
-    ret += to_string(j2->getArgent());
+    ret += to_string(jDroite->getArgent());
     ret += "\t";
-    ret += j2->getHp();
+    ret += jDroite->getHp();
     ret += " Hp";
     ret += "\n";
 	for (auto u = u2.begin(); u != u2.end(); u++) {
