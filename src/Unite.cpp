@@ -97,6 +97,12 @@ int Unite::getAtt()
 }
 
 
+int Unite::getPrix()
+{
+	return prix;
+}
+
+
 int Unite::getPortee()
 {
 	return portee;

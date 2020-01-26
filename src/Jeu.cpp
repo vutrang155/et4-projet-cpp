@@ -109,16 +109,25 @@ void Jeu::action3(Unite* u)
 
 }
 
+
+
 void Jeu::achatUnite(Joueur* j)
 {
+    if((j->getPositionBase().compare("Gauche") == 0 && !estLibreCase(0)) || (j->getPositionBase().compare("Droite") == 0 && !estLibreCase(TAILLE_TERRAIN - 1)))
+    {
+        cout << "La case du joueur " << j->getPositionBase() << " n'est pas libre donc aucune unité ne peut être achetée par ce joueur" << endl;
+        return;
+    }
+
+
     if(j->getArgent() < 10)
     {
-        cout << "Vous ne possédez que " <<  j->getArgent() << " pièces d'or" << endl << "Vous ne pouvez pas acheter d'unité" << endl;
+        cout << "Vous ne possédez que " <<  j->getArgent() << " pièces d'or donc vous ne pouvez pas acheter d'unité (minimum 10 pièces d'or)" << endl;
 
         return;
     }
 
-    cout << "Argent du Joueur " << j->getCaracteristique() << " : " << j->getArgent() << " pièces d'or" <<endl;
+    cout << "Argent du Joueur " << j->getPositionBase() << " : " << j->getArgent() << " pièces d'or" <<endl;
 
     string choixAchatUnite;
 
@@ -143,60 +152,114 @@ void Jeu::achatUnite(Joueur* j)
 
     }
 
-    aFaitSonChoix = false;
+
+
+
+
+    
+
+
+
 
     string choixUniteAchetee;
 
+    //Choix 2 : Choisir l'unité à acheter
     if(choixAchatUnite.compare("O") == 0)
     {
-        //Choix 2 : Choisir l'unité à acheter
-        while(!aFaitSonChoix)
+        while(1)
         {
             cout << "Quelle unité voulez-vous acheter?" << endl;
 
-            cout << "1 --> Fantassin" << endl;
+            cout << "1 --> Fantassin (prix : 10 pièces d'or)" << endl;
 
 
             if(j->getArgent() >= 12)
             {
-                cout << "2 --> Archer" << endl;
+                cout << "2 --> Archer (prix : 12 pièces d'or)" << endl;
             }
 
 
             if(j->getArgent() >= 22)
             {
-                cout << "3 --> Catapulte" << endl;
+                cout << "3 --> Catapulte (prix : 22 pièces d'or)" << endl;
             }
 
+            cout << "'n' --> Annuler l'achat d'une unité" << endl;
+
             
+
+
+
+
             cin >> choixUniteAchetee;
 
-
-            int intChoixUniteAchetee = atoi(choixUniteAchetee);
-
-
-            switch(intChoixUniteAchetee)
-                {
-                    case 1 : 
-                        achatUnite()
-
-                    case 2 : 
-
-                    case 3 : 
-
-
-                    default :
-                        cout << "Veuillez faire un choix valide" << endl;
-                }
-
-                aFaitSonChoix = true;
-
+        
+            if(choixUniteAchetee.compare("n") == 0)
+            {
+                cout << "Achat d'unité annulé" << endl;
+                return;
             }
 
+
+            int intChoixUniteAchetee = stoi(choixUniteAchetee);
+
+            if(intChoixUniteAchetee == 1)
+            {
+                joueurAcheteUnite(j,"Fantassin");
+                return;
+            }
             
+            else if(intChoixUniteAchetee == 2 && j->getArgent() >= 12)
+            {
+                joueurAcheteUnite(j,"Archer");
+                return;
+            }
+
+            else if(intChoixUniteAchetee == 3 && j->getArgent() >= 22)
+            {
+                joueurAcheteUnite(j,"Catapulte");
+                return;
+            }
+
+            else
+            {
+                cout << "Veuillez faire un choix valide" << endl;
+            }
+    
         }
+
+
     }
 
+    else
+    {
+        cout << "Pas d'achat effectué" << endl;
+    }
+
+    
+
+}
+
+
+void Jeu::joueurAcheteUnite(Joueur* j, string caracteristique)
+{
+    Unite* u = new Unite(j, caracteristique);
+
+    //Achat d'une unité par le joueur à gauche
+    if(j->getPositionBase().compare("Gauche") == 0)
+    {
+        terrain[0] = u;
+    }
+
+    //Achat d'une unité par le joueur à droite
+    else
+    {
+        terrain[TAILLE_TERRAIN - 1] = u;
+    }
+
+    j->diminuerArgent(u->getPrix());
+
+    cout << "Le joueur " << j->getPositionBase() << " a acheté un(e) " << caracteristique << endl;
 
 }
 
@@ -211,7 +274,7 @@ void Jeu::tour(Joueur* j)
 
 
     //Action 1
-    if(j->getPositionBase().compare("Gauche"))
+    if(j->getPositionBase().compare("Gauche") == 0)
     {
         //De gauche à droite
         for(int i = 0; i < unitesJoueur.size(); i++)
@@ -235,7 +298,7 @@ void Jeu::tour(Joueur* j)
 
 
     //Action 2
-    if(j->getPositionBase().compare("Gauche"))
+    if(j->getPositionBase().compare("Gauche") == 0)
     {
         //De droite à gauche
         for(int i = unitesJoueur.size() - 1; i >= 0 ; i--)
@@ -258,7 +321,7 @@ void Jeu::tour(Joueur* j)
 
 
     //Action 3
-    if(j->getPositionBase().compare("Gauche"))
+    if(j->getPositionBase().compare("Gauche") == 0)
     {
         //De droite à gauche
         for(int i = unitesJoueur.size() - 1; i >= 0 ; i--)
@@ -466,21 +529,6 @@ bool Jeu::avancer(Unite* u)
 
 
 
-/*
-void Jeu::phaseActions1(PositionBase positionBase)
-{
-	for(Unite* u : terrain)
-	{
-		if(*u.getJoueur().getPositionBase() == positionBase)
-		{
-			action1(u);
-
-		}
-
-	}
-
-}
-*/
 
 
 
@@ -532,6 +580,12 @@ vector<Unite*> Jeu::getUnites(Joueur* j)
         }
     }
     return unitesJoueur;
+}
+
+
+Unite* Jeu::getUniteDuTerrain(int indexUnite)
+{
+    return terrain[indexUnite];
 }
 
 
