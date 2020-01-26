@@ -68,7 +68,7 @@ class Jeu {
 
 		bool avancer(Unite* u);
 
-		bool attaquer(Unite* u, string direction, bool isAction1Effectueee);
+		bool attaquer(Unite* u, bool isAction1Effectueee);
 
 		string getDirection(Joueur* j);
 

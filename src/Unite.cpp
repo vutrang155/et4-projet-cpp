@@ -62,19 +62,12 @@ Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 }
 
 Unite::~Unite() {
-
     currentId--;
 }
 void Unite::estAttaque(int valAttaque)
 {
 		hp -= valAttaque;
-
 }
-
-
-
-
-
 
 int Unite::getId()
 {
@@ -119,6 +112,15 @@ void Unite::setJoueur(Joueur* parJoueur)
 void Unite::setCaracteristique(string parCaracteristique)
 {
 		caracteristique = parCaracteristique;
+}
+
+void Unite::devenirSuperSoldat() {
+    if(getCaracteristique().compare("Fantassin") == 0) {
+        setCaracteristique("Super-soldat");
+    }
+    else {
+        std::cout << "seul un fantassin peut devenir supersoldat" << std::endl;
+    }
 }
 
 

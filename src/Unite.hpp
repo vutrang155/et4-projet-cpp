@@ -63,6 +63,8 @@ public :
     void setHp(int parHp);
     void setAtt(int parAtt);
     void setPortee(int parPortee);
+
+    void devenirSuperSoldat();
 };
 
 #endif
