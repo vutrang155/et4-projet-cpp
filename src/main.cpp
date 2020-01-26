@@ -39,11 +39,13 @@ int main()
 {
     //testAvancer();
     //testAttaquerCatapulte();
-    testAttaquerFantassin();
+    //testAttaquerFantassin();
     //testAttaquerCatapulte();
-
     //testAchat();
-
+    Joueur *joueurGauche = new Joueur("Gauche");
+    Joueur *joueurDroite = new Joueur("Droite");
+    Jeu *jeu = new Jeu(joueurGauche, joueurDroite);
+    jeu->deroulement();
     return 0;
 
 }
