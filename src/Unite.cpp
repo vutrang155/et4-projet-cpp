@@ -61,11 +61,10 @@ Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 
 }
 
+Unite::~Unite() {
 
-
-
-
-
+    currentId--;
+}
 void Unite::estAttaque(int valAttaque)
 {
 		hp -= valAttaque;

@@ -19,12 +19,12 @@ using namespace std;
 // Constructeur 
 Jeu::Jeu() 
 {
-	terrain[TAILLE_TERRAIN] = { nullptr };
 }
 // Destructeur 
 Jeu::~Jeu()
 {
-
+    delete this->j1;
+    delete this->j2;
 }
 
 /*
@@ -170,17 +170,16 @@ int Jeu::getIndex(Unite* u)
 vector<Unite*> Jeu::getUnites(Joueur* j)
 {
 	vector<Unite*> unitesJoueur;
-
+	std::cout << j->getPositionBase();
+	/*
 	for(int i = 0; i < TAILLE_TERRAIN; i++)
-	{	
-
-		if(terrain[i]->getJoueur()->getPositionBase().compare(j->getPositionBase()))
-		{
-			unitesJoueur.push_back(terrain[i]);
-		}
-	
-	}
-
+	{
+	    if(terrain[i] != nullptr) { // Verifie la case est vide
+            //if (terrain[i]->getJoueur()->getPositionBase().compare(j->getPositionBase())) {
+                //unitesJoueur.push_back(terrain[i]);
+            //}
+        }
+	}*/
 	return unitesJoueur;
 }	
 
@@ -206,20 +205,30 @@ string Jeu::afficher()
  */
 string Jeu::afficher(){
 	string ret = "|";
-	vector<Unite*> u1 = getUnites(j1);
-	vector<Unite*> u2 = getUnites(j2);
+
+	// Afficher les cases
 	for (int i = 0; i < TAILLE_TERRAIN; i++){
-		ret += "|\t";
-		if (terrain[i]->getJoueur() == j1)
-		    ret += "j1.";
-		else
-            ret += "j2.";
-		ret += terrain[i]->getId();
-		ret += "\t|";
-	}
-	ret += "|\n";
+		ret += "| ";
+		if (terrain[i] != nullptr) { // If not found
+            if (terrain[i]->getJoueur() == j1)
+                ret += "j1.";
+            else
+                ret += "j2.";
+
+            ret += to_string(terrain[i]->getId());
+        }
+        ret += " |";
+    }
+    ret += "|\n";
+
+	// Afficher les informations sur le terrain
+    //vector<Unite*> u1 = this->getUnites(j1);
+    //vector<Unite*> u2 = this->getUnites(j2);
+    //std::cout << j1->getPositionBase();
+    //this->getUnites(j1);
 	ret += "Joueur 1 : \n";
 	return ret;
+
 }
 
 

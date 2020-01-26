@@ -45,7 +45,7 @@ int main()
 	//cout << "Case 1:"  << *(jeu->getUnite(1)) << endl;
 	cout << "Case 2:"  << *(jeu->getUnite(2));
 
+	vector<Unite*> u = jeu->getUnites(joueur);
 	cout << jeu->afficher();
-
 	return 0;
 }
