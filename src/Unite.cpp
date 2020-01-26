@@ -8,7 +8,12 @@
 #define PORTEE2 2
 #define PORTEE3 3
 
+
+
+
 int Unite::currentId = 0;
+
+
 Unite::Unite(Joueur* parJoueur, string parCaracteristique)
 {
 		caracteristique = parCaracteristique;

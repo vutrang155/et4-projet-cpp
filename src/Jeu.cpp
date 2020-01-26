@@ -14,6 +14,9 @@
 
 using namespace std;
 
+
+
+
 // Constructeur 
 Jeu::Jeu() {
 }
@@ -228,13 +231,13 @@ Unite* Jeu::getUnite(int i)
 }
 
 
-ostream& operator<<(ostream& os, const Jeu& jeu) 
+ostream& operator<<(ostream& os, Jeu& jeu) 
 {
 	os << jeu.afficher();
 }	
 
-ostream& operator<<(ostream& os, const Unite& u) {
-		os << u.getC() << " " << u.getId() << endl;
+ostream& operator<<(ostream& os, Unite& u) {
+		os << u.getCaracteristique() << " " << u.getId() << endl;
 		os << "HP : " << u.getHp() << endl;
 		os << endl;
 

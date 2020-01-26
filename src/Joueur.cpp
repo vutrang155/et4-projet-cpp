@@ -9,6 +9,9 @@
 
 using namespace std;
 
+
+
+
 Joueur::Joueur(Jeu* parJeu, string parPositionBase)
 {
 	if(parPositionBase.compare("Gauche") != 0 && parPositionBase.compare("Droite") != 0)

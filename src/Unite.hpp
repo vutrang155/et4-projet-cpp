@@ -13,6 +13,9 @@ using namespace std;
  * A eviter : Circular Dependencies
  * https://stackoverflow.com/questions/7665912/double-include-solution
  */
+
+class Jeu;
+
 class Joueur;
 
 
@@ -63,7 +66,7 @@ class Unite {
 				/*
 				 * Setters
 				 */
-				void setJoueur(Joueur parJoueur);
+				void setJoueur(Joueur* parJoueur);
 				void setC(string parCaracteristique);
 				void setHp(int parHp);
 				void setAtt(int parAtt);
