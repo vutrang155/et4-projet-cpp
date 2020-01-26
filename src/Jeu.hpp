@@ -81,6 +81,8 @@ class Jeu {
 		
 		void action3(Unite* u);
 
+		void achatUnite(Joueur* j)
+
 		//friend ostream& operator<<(ostream& os, Jeu& jeu);
 
 		

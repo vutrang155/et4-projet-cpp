@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <stdlib.h> 
 #include <array>
 #include <vector>
 
@@ -42,6 +43,7 @@ void Jeu::deroulement()
         jDroite->augmenterArgent(8);
 
         tour(jGauche);
+        
 
         tour(jDroite);
 
@@ -64,6 +66,9 @@ void Jeu::deroulement()
     
 }
 
+
+
+
 string Jeu::getDirection(Joueur* j)
 {
 	if(j->getPositionBase().compare("Gauche") == 0)
@@ -85,7 +90,7 @@ void Jeu::action1(Unite* u)
 
 void Jeu::action2(Unite* u)
 {
-    if(!u->getCaracteristique().compare("Catapulte"))
+    if(!u->getCaracteristique().compare("Catapulte") == 0)
     {
         avancer(u);
     }
@@ -106,6 +111,98 @@ void Jeu::action3(Unite* u)
     }
 
 }
+
+void Jeu::achatUnite(Joueur* j)
+{
+    if(j->getArgent() < 10)
+    {
+        cout << "Vous ne possédez que " <<  j->getArgent() << " pièces d'or" << endl << "Vous ne pouvez pas acheter d'unité" << endl;
+
+        return;
+    }
+
+    cout << "Argent du Joueur " << j->getCaracteristique() << " : " << j->getArgent() << " pièces d'or" <<endl;
+
+    string choixAchatUnite;
+
+    bool aFaitSonChoix = false;
+    
+    //Choix 1 : Acheter une unité ou non
+    while(!aFaitSonChoix)
+    {
+        cout << "Voulez-vous acheter une unité? 'O' --> Oui, 'n' --> Non" << endl;
+
+        cin >> choixAchatUnite;
+
+        if(choixAchatUnite.compare("O") == 0 || choixAchatUnite.compare("n") == 0)
+        {
+            aFaitSonChoix = true;
+        }
+
+        else
+        {
+            cout << "Veuillez faire un choix valide" << endl;
+        }
+
+    }
+
+    aFaitSonChoix = false;
+
+    string choixUniteAchetee;
+
+    if(choixAchatUnite.compare("O") == 0)
+    {
+        //Choix 2 : Choisir l'unité à acheter
+        while(!aFaitSonChoix)
+        {
+            cout << "Quelle unité voulez-vous acheter?" << endl;
+
+            cout << "1 --> Fantassin" << endl;
+
+
+            if(j->getArgent() >= 12)
+            {
+                cout << "2 --> Archer" << endl;
+            }
+
+
+            if(j->getArgent() >= 22)
+            {
+                cout << "3 --> Catapulte" << endl;
+            }
+
+            
+            cin >> choixUniteAchetee;
+
+
+            int intChoixUniteAchetee = atoi(choixUniteAchetee);
+
+
+            switch(intChoixUniteAchetee)
+                {
+                    case 1 : 
+                        achatUnite()
+
+                    case 2 : 
+
+                    case 3 : 
+
+
+                    default :
+                        cout << "Veuillez faire un choix valide" << endl;
+                }
+
+                aFaitSonChoix = true;
+
+            }
+
+            
+        }
+    }
+
+
+}
+
 
 
 void Jeu::tour(Joueur* j)
@@ -183,6 +280,8 @@ void Jeu::tour(Joueur* j)
         }	
     }
 
+
+    achatUnite(j);
 	
 }
 
@@ -225,6 +324,7 @@ bool Jeu::attaquer(Unite* u)
                 }
             }
         }
+
         else { // Sinon
             for(int i = -1; i >= portee; i--) {
                 if (!estLibreCase(indexUnite+i) && indexUnite+i != -1) {
