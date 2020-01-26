@@ -35,17 +35,23 @@ int main()
 	
 	Unite* u = new Unite(joueur,"Fantassin");
 	
-
+    
 	jeu->addUnite(u,1);
 
-	cout << "Case 1:"  << *(jeu->getUnite(1));
+    
+
+	cout << "Case 1:"  << *(jeu->getUnite(1)) << endl;
+
+
 
 	jeu->avancer(u,"->");
 
-	printf("L'unité a avancé");
+	cout << "L'unité a avancé" << endl;;
 
-	cout << "Case 1:"  << *(jeu->getUnite(1));
-	cout << "Case 2:"  << *(jeu->getUnite(2));
+	//cout << "Case 1:"  << *(jeu->getUnite(1)) << endl;
+	cout << "Case 2:"  << *(jeu->getUnite(2))
+
+
 
 
 	return 0;

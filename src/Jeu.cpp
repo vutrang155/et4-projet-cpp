@@ -8,8 +8,6 @@
 #include "Joueur.hpp"
 
 
-
-#define TAILLE_TERRAIN 12
 #define NOMBRE_TOURS 50
 
 
@@ -19,11 +17,14 @@ using namespace std;
 
 
 // Constructeur 
-Jeu::Jeu() {
+Jeu::Jeu() 
+{
+	terrain[TAILLE_TERRAIN] = { nullptr };
 }
 // Destructeur 
 Jeu::~Jeu()
 {
+
 }
 
 /*
@@ -231,19 +232,5 @@ Unite* Jeu::getUnite(int i)
 }
 
 
-ostream& operator<<(ostream& os, Jeu& jeu) 
-{
-	os << jeu.afficher();
 
-	return os;
-}	
-
-ostream& operator<<(ostream& os, Unite& u) {
-		os << u.getCaracteristique() << " " << u.getId() << endl;
-		os << "HP : " << u.getHp() << endl;
-		os << endl;
-
-		return os;
-
-}	
 

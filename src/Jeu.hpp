@@ -4,8 +4,9 @@
 #include <iostream>
 #include <string.h>
 #include <vector>
+#include <array>
 
-
+#define TAILLE_TERRAIN 12
 
 
 
@@ -17,12 +18,14 @@ class Unite;
 
 
 class Jeu {
+
 	private :
-		Unite** terrain;
+	
+		array<Unite*,TAILLE_TERRAIN> terrain;
 		Joueur* j1;
 		Joueur* j2;
 
-		
+
 	public :
 		// Constructeur 
 		Jeu();
