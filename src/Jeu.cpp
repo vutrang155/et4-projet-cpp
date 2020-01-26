@@ -490,21 +490,7 @@ bool Jeu::attaquer(Unite* u) {
     }
     return false;
 }
-/*}
-else return false;
-if(portee >= 0) { // Si Gauche
-        for(int i = 1; i <= portee; i++) {
-
-            if (u->getCaracteristique().compare("Catapulte") != 0) { // Si c'est catapulte
-                // Attaque sur le tour
-                if (indexUnite + i == TAILLE_TERRAIN - 1 && estLibreCase(indexUnite + i)) {
-                    jDroite->estAttaque(u->getAtt());
-                }
-
-                // Attaque sur unite
-                if (indexUnite + i <= TAILLE_TERRAIN-1 && !estLibreCase(indexUnite + i)) {
-                    Unite *attaquee = terrain[indexUnite + i];
-                    if (attaquee->getJoueur() != u->getJoueur()) { // Si ce n'est pas un allie
+/*} else return false; if(portee >= 0) { // Si Gauche for(int i = 1; i <= portee; i++) { if (u->getCaracteristique().compare("Catapulte") != 0) { // Si c'est catapulte // Attaque sur le tour if (indexUnite + i == TAILLE_TERRAIN - 1 && estLibreCase(indexUnite + i)) { jDroite->estAttaque(u->getAtt()); } // Attaque sur unite if (indexUnite + i <= TAILLE_TERRAIN-1 && !estLibreCase(indexUnite + i)) { Unite *attaquee = terrain[indexUnite + i]; if (attaquee->getJoueur() != u->getJoueur()) { // Si ce n'est pas un allie
                         attaquee->estAttaque(u->getAtt());
                         // si hp = 0
                         if (attaquee->getHp() <= 0) {
@@ -572,7 +558,7 @@ bool Jeu::avancer(Unite* u)
 
     int indexUnite = getIndex(u);
 
-    if(u->getJoueur()->getPositionBase() == "Gauche" && estLibreCase(indexUnite + 1) && indexUnite != TAILLE_TERRAIN - 2)
+    if(u->getJoueur()->getPositionBase() == "Gauche" && indexUnite != TAILLE_TERRAIN - 2 && estLibreCase(indexUnite + 1))
     {
         terrain[indexUnite] = NULL;
         terrain[indexUnite + 1] = u;
@@ -580,7 +566,7 @@ bool Jeu::avancer(Unite* u)
         return true;
 
     }
-    else if(u->getJoueur()->getPositionBase() == "Droite" && estLibreCase(indexUnite - 1) && indexUnite != 1)
+    else if(u->getJoueur()->getPositionBase() == "Droite"  && indexUnite != 1&& estLibreCase(indexUnite - 1))
     {
         terrain[indexUnite] = NULL;
         terrain[indexUnite - 1] = u;
