@@ -33,19 +33,34 @@ void testAvancer();
 void testAttaquerFantassin();
 void testAttaquerCatapulte();
 void testAchat();
+void testExit();
 
 
 int main()
 {
     //testAvancer();
     //testAttaquerCatapulte();
-    testAttaquerFantassin();
+    //testAttaquerFantassin();
     //testAttaquerCatapulte();
 
     //testAchat();
 
+    
+    Joueur *joueurGauche = new Joueur("Gauche");
+    Joueur *joueurDroite = new Joueur("Droite");
+    Jeu *jeu = new Jeu(joueurGauche, joueurDroite);
+
+    jeu->deroulement();   
+    
+
     return 0;
 
+}
+
+void testExit()
+{
+    cout << "test testExit()" << endl;
+    exit(0);
 }
 
 void testAchat()

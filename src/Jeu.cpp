@@ -37,23 +37,27 @@ void Jeu::deroulement()
 {
 
 
+
     for(int cpt = 0; cpt < NOMBRE_TOURS; cpt++)
     {
-        jGauche->augmenterArgent(8);
-        jDroite->augmenterArgent(8);
-
         tour(jGauche);
         tour(jDroite);
+    
     }
+
+
+
 
     if(jGauche->getHp() <= 0)
     {
-        cout << "Le joueur à droite a gagné" << endl;
+        cout << "Le joueur à gauche n'a plus de point de vie" << endl;
+		cout << "Le joueur à droite a gagné la partie" << endl;
     }
 
     else if(jDroite->getHp() <= 0)
     {
-        cout << "Le joueur à gauche a gagné" << endl;
+        cout << "Le joueur à droite n'a plus de point de vie" << endl;
+		cout << "Le joueur à gauche a gagné la partie" << endl;
     }
 
     else
@@ -267,6 +271,8 @@ void Jeu::joueurAcheteUnite(Joueur* j, string caracteristique)
 
 void Jeu::tour(Joueur* j)
 {
+    j->augmenterArgent(8);
+
     string positionBase = j->getPositionBase();
 
     vector<Unite*> unitesJoueur = getUnites(j);
