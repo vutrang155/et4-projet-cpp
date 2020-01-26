@@ -113,7 +113,7 @@
       <option name="presentableId" value="Default" />
       <updated>1580027288884</updated>
       <workItem from="1580027290332" duration="185000" />
-      <workItem from="1580028090077" duration="27134000" />
+      <workItem from="1580028090077" duration="32216000" />
     </task>
     <servers />
   </component>
@@ -137,6 +137,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="336" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1580028122723" />
+    <state x="315" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580066135212">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="315" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1580066135212" />
     <state x="540" y="72" key="ftp.server.browser" timestamp="1580028213520">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

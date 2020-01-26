@@ -56,6 +56,7 @@ bool Joueur::estAttaque(int valAttaque)
 
 	if(hp <= 0)
 	{
+	    hp = 0;
 		return true;
 	}
 

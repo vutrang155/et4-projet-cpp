@@ -39,10 +39,10 @@ int main()
 {
     //testAvancer();
     //testAttaquerCatapulte();
+    testAttaquerFantassin();
+    //testAttaquerCatapulte();
 
-    
-
-    testAchat();
+    //testAchat();
 
     return 0;
 
@@ -82,7 +82,7 @@ void testAvancer() {
     Jeu *jeu = new Jeu(joueurGauche, joueurDroite);
 
 
-    Unite *uGauche = new Unite(joueurGauche, "Fantassin");
+    Unite *uGauche = new Unite(joueurGauche, "Archer");
 
     jeu->addUnite(uGauche, 1);
 
@@ -134,18 +134,26 @@ void testAttaquerFantassin() {
     Jeu *jeu = new Jeu(joueurGauche, joueurDroite);
 
     // Creer une unite pour le joueur 1
-    Unite *uGauche = new Unite(joueurGauche, "Fantassin");
-    jeu->addUnite(uGauche, 0);
+    /*
+    Unite *uGauche = new Unite(joueurGauche, "Archer");
+    jeu->addUnite(uGauche, 4);
+    Unite *uGauche1 = new Unite(joueurGauche, "Fantassin");
+    jeu->addUnite(uGauche1, 5);
     Unite *uDroite = new Unite(joueurDroite, "Fantassin");
-    jeu->addUnite(uDroite, 11);
+    jeu->addUnite(uDroite, 6);
+     */
+    Unite *uGauche = new Unite(joueurGauche, "Archer");
+    jeu->addUnite(uGauche, 10);
     cout << jeu->afficher();
-    bool aAvance = true;
-    bool aAvance2 = true;
+    //bool aAvance = true;
+    //bool aAvance2 = true;
 
+    /*
     while (aAvance && aAvance2) {
         aAvance = jeu->avancer(uGauche);
         aAvance2 = jeu->avancer(uDroite);
     }
+     */
 
 
     cout << jeu->afficher();
@@ -168,8 +176,9 @@ void testAttaquerCatapulte() {
     jeu->addUnite(uGauche2, 4);
     Unite *uDroite = new Unite(joueurDroite, "Fantassin");
     jeu->addUnite(uDroite, 5);
+    Unite *uDroite2= new Unite(joueurDroite, "Fantassin");
+    jeu->addUnite(uDroite2, 6);
     cout << jeu->afficher();
-
 
     cout << jeu->afficher();
     // Attaquer :

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <array>
 #include <vector>
 
@@ -35,7 +35,7 @@ Jeu::~Jeu()
  */
 void Jeu::deroulement()
 {
-	
+
 
     for(int cpt = 0; cpt < NOMBRE_TOURS; cpt++)
     {
@@ -45,7 +45,7 @@ void Jeu::deroulement()
         tour(jGauche);
         tour(jDroite);
     }
-	
+
     if(jGauche->getHp() <= 0)
     {
         cout << "Le joueur à droite a gagné" << endl;
@@ -60,7 +60,7 @@ void Jeu::deroulement()
     {
         cout << "Match nul" << endl;
     }
-    
+
 }
 
 
@@ -132,7 +132,7 @@ void Jeu::achatUnite(Joueur* j)
     string choixAchatUnite;
 
     bool aFaitSonChoix = false;
-    
+
     //Choix 1 : Acheter une unité ou non
     while(!aFaitSonChoix)
     {
@@ -156,7 +156,7 @@ void Jeu::achatUnite(Joueur* j)
 
 
 
-    
+
 
 
 
@@ -186,14 +186,14 @@ void Jeu::achatUnite(Joueur* j)
 
             cout << "'n' --> Annuler l'achat d'une unité" << endl;
 
-            
+
 
 
 
 
             cin >> choixUniteAchetee;
 
-        
+
             if(choixUniteAchetee.compare("n") == 0)
             {
                 cout << "Achat d'unité annulé" << endl;
@@ -208,7 +208,7 @@ void Jeu::achatUnite(Joueur* j)
                 joueurAcheteUnite(j,"Fantassin");
                 return;
             }
-            
+
             else if(intChoixUniteAchetee == 2 && j->getArgent() >= 12)
             {
                 joueurAcheteUnite(j,"Archer");
@@ -225,7 +225,7 @@ void Jeu::achatUnite(Joueur* j)
             {
                 cout << "Veuillez faire un choix valide" << endl;
             }
-    
+
         }
 
 
@@ -236,7 +236,7 @@ void Jeu::achatUnite(Joueur* j)
         cout << "Pas d'achat effectué" << endl;
     }
 
-    
+
 
 }
 
@@ -251,7 +251,7 @@ void Jeu::joueurAcheteUnite(Joueur* j, string caracteristique)
         terrain[0] = u;
     }
 
-    //Achat d'une unité par le joueur à droite
+        //Achat d'une unité par le joueur à droite
     else
     {
         terrain[TAILLE_TERRAIN - 1] = u;
@@ -267,30 +267,30 @@ void Jeu::joueurAcheteUnite(Joueur* j, string caracteristique)
 
 void Jeu::tour(Joueur* j)
 {
-	string positionBase = j->getPositionBase();
+    string positionBase = j->getPositionBase();
 
-	vector<Unite*> unitesJoueur = getUnites(j);
-	
+    vector<Unite*> unitesJoueur = getUnites(j);
+
 
 
     //Action 1
     if(j->getPositionBase().compare("Gauche") == 0)
     {
         //De gauche à droite
-        for(int i = 0; i < unitesJoueur.size(); i++)
+        for(size_t i = 0; i < unitesJoueur.size(); i++)
         {
-            action1(unitesJoueur[i]);	
-        }	
-        
+            action1(unitesJoueur[i]);
+        }
+
     }
-    
+
     else
     {
         //De droite à gauche
         for(int i = unitesJoueur.size() - 1; i >= 0 ; i--)
         {
-            action1(unitesJoueur[i]);	
-        }	
+            action1(unitesJoueur[i]);
+        }
     }
 
 
@@ -303,46 +303,43 @@ void Jeu::tour(Joueur* j)
         //De droite à gauche
         for(int i = unitesJoueur.size() - 1; i >= 0 ; i--)
         {
-            action2(unitesJoueur[i]);	
-        }	
-        
+            action2(unitesJoueur[i]);
+        }
+
     }
-    
+
     else
     {
         //De gauche à droite
-        for(int i = 0; i < unitesJoueur.size(); i++)
+        for(size_t i = 0; i < unitesJoueur.size(); i++)
         {
-            action2(unitesJoueur[i]);	
-        }	
+            action2(unitesJoueur[i]);
+        }
     }
-
-
-
 
     //Action 3
     if(j->getPositionBase().compare("Gauche") == 0)
     {
         //De droite à gauche
-        for(int i = unitesJoueur.size() - 1; i >= 0 ; i--)
+        for(size_t i = unitesJoueur.size() - 1; i--;)
         {
-            action3(unitesJoueur[i]);	
-        }	
-        
+            action3(unitesJoueur[i]);
+        }
+
     }
-    
+
     else
     {
         //De gauche à droite
-        for(int i = 0; i < unitesJoueur.size(); i++)
+        for(size_t i = 0; i--; )
         {
-            action3(unitesJoueur[i]);	
-        }	
+            action3(unitesJoueur[i]);
+        }
     }
 
 
     achatUnite(j);
-	
+
 }
 
 
@@ -352,152 +349,140 @@ void Jeu::tour(Joueur* j)
 
 
 // Renvoyer vrai si l'unite attaque
-bool Jeu::attaquer(Unite* u)
-{
-    if(u->getIsAction1Effectuee()) {
-        int portee = 0; // Declaration de portee de l'unite
-        int indexUnite = getIndex(u);
-        std::string direction = u->getJoueur()->getPositionBase();
-        if(direction.compare("Gauche") == 0) portee = u->getPortee();
-        if(direction.compare("Droite") == 0) portee = 0 - u->getPortee();
+bool Jeu::attaquer(Unite* u) {
 
-        if(portee >= 0) { // Si Gauche
-            for(int i = 1; i <= portee; i++) {
+    //if(u->getIsAction1Effectuee()) {
+    int portee = 0; // Declaration de portee de l'unite
+    int indexUnite = getIndex(u);
+    std::string direction = u->getJoueur()->getPositionBase();
+    if (direction.compare("Gauche") == 0) portee = u->getPortee();
+    if (direction.compare("Droite") == 0) portee = 0 - u->getPortee();
+    Unite *enemi = nullptr;
+    for (int i = 1; i <= portee; i++) {
+        if (indexUnite + i <= TAILLE_TERRAIN - 1) {
+            if (terrain[indexUnite + i] != nullptr) {
+                if (terrain[indexUnite + i]->getJoueur() != u->getJoueur()) {
+                    enemi = terrain[indexUnite + i];
+                    break;
+                }
+            }
+        }
+    }
+    if (enemi != nullptr) {
 
+        enemi->estAttaque(u->getAtt());
+        // si hp = 0
+        if (enemi->getHp() <= 0) {
+            std::string attaqueeType = enemi->getCaracteristique();
+            if (attaqueeType.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
+            if (attaqueeType.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
+            else u->getJoueur()->augmenterArgent(5);
 
-                if (u->getCaracteristique().compare("Catapulte") != 0) { // Si c'est catapulte
-                    // Attaque sur le tour
-                    if (indexUnite + i == TAILLE_TERRAIN - 1 && estLibreCase(indexUnite + i)) {
-                        jDroite->estAttaque(u->getAtt());
-                    }
+            terrain[getIndex(enemi)] = nullptr;
+            // Si l'attaqueur est fantassin
+            if (u->getCaracteristique().compare("Fantassin") == 0) u->devenirSuperSoldat();
+        }
 
-                    // Attaque sur unite
-                    if (indexUnite + i > TAILLE_TERRAIN-1 && !estLibreCase(indexUnite + i)) {
-                        Unite *attaquee = terrain[indexUnite + i];
-                        if (attaquee->getJoueur() != u->getJoueur()) { // Si ce n'est pas un allie
-                            attaquee->estAttaque(u->getAtt());
-                            // si hp = 0
-                            if (attaquee->getHp() <= 0) {
-                                // Remporte l'argent */
-                                std::string attaqueeType = attaquee->getCaracteristique();
-                                if (attaqueeType.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
-                                if (attaqueeType.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
-                                else u->getJoueur()->augmenterArgent(5);
+        if (u->getCaracteristique().compare("Catapulte") == 0) {
+            if (getIndex(enemi) + 1 <= TAILLE_TERRAIN-1) {
+                if (terrain[getIndex(enemi) + 1] != nullptr) {
+                    Unite *enemi2 = terrain[getIndex(enemi) + 1] ;
+                    enemi2->estAttaque(u->getAtt());
+                    if (enemi2->getHp() <= 0) {
+                        std::string attaqueeType = enemi2->getCaracteristique();
+                        if (attaqueeType.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
+                        if (attaqueeType.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
+                        else u->getJoueur()->augmenterArgent(5);
 
-                                terrain[indexUnite + i] = nullptr;
-                                // Si l'attaqueur est fantassin
-                                if (u->getCaracteristique().compare("Fantassin") == 0) u->devenirSuperSoldat();
-
-                                return true;
-                            }
-                        }
-                        else { return false; }
-                    }
-                } else {
-                    if (i != 1) {
-                        if (indexUnite + i > TAILLE_TERRAIN-1 && !estLibreCase(indexUnite + i)) {
-                            Unite *attaquee = terrain[indexUnite + i];
-                            attaquee->estAttaque(u->getAtt());
-
-                            // si hp = 0
-                            if (attaquee->getHp() <= 0) {
-                                /* Remporte l'argent */
-                                std::string attaqueeType = attaquee->getCaracteristique();
-                                if (attaqueeType.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
-                                if (attaqueeType.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
-                                else u->getJoueur()->augmenterArgent(5);
-                                terrain[indexUnite + i] = nullptr;
-                            }
-
-
-                            if (indexUnite + i + 1!= TAILLE_TERRAIN -1 && !estLibreCase(indexUnite+i+1)) {
-                                Unite *attaquee2 = terrain[indexUnite + i + 1];
-                                attaquee2->estAttaque(u->getAtt());
-
-                                // si hp = 0
-                                if (attaquee2->getHp() <= 0) {
-                                    /* Remporte l'argent */
-                                    std::string attaqueeTypex = attaquee2->getCaracteristique();
-                                    if (attaqueeTypex.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
-                                    if (attaqueeTypex.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
-                                    else u->getJoueur()->augmenterArgent(5);
-                                    terrain[indexUnite + i] = nullptr;
-                                }
-
-
-                            }
-                        }
+                        terrain[getIndex(enemi2)] = nullptr;
                     }
                 }
             }
         }
 
-        else { // Sinon
-            for(int i = -1; i >= portee; i--) {
-                if (u->getCaracteristique().compare("Catapulte") != 0) { // Si ce n'est pas une catapulte
-                    if (!estLibreCase(indexUnite + i) && indexUnite + i != TAILLE_TERRAIN - 1) {
-                        Unite *attaquee = terrain[indexUnite + i];
-                        if (attaquee->getJoueur() != u->getJoueur()) { // Si ce n'est pas un allie
-                            attaquee->estAttaque(u->getAtt());
-                            // si hp = 0
-                            if (attaquee->getHp() <= 0) {
-                                /* Remporte l'argent */
-                                std::string attaqueeType = attaquee->getCaracteristique();
-                                if (attaqueeType.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
-                                if (attaqueeType.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
-                                else u->getJoueur()->augmenterArgent(5);
+        return true;
+    }
+    // Cas d'attaquer le tour
+    else {
+        jDroite->estAttaque(u->getAtt());
+    }
 
-                                terrain[indexUnite + i] = nullptr;
-                                // Si l'attaqueur est fantassin
-                                if (u->getCaracteristique().compare("Fantassin") == 0) u->devenirSuperSoldat();
-                                return true;
-                            }
-                        }
-                        else { return false;}
-                    }
-                } else {
-                    if (i != 1) {
-                        if (!estLibreCase(indexUnite + i) && indexUnite + i != TAILLE_TERRAIN - 1) {
-                            Unite *attaquee1 = terrain[indexUnite + i];
-                            attaquee1->estAttaque(u->getAtt());
+    return false;
+}
+/*}
+else return false;
+if(portee >= 0) { // Si Gauche
+        for(int i = 1; i <= portee; i++) {
 
-                            // si hp = 0
-                            if (attaquee1->getHp() <= 0) {
-                                /* Remporte l'argent */
-                                std::string attaqueeType = attaquee1->getCaracteristique();
-                                if (attaqueeType.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
-                                if (attaqueeType.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
-                                else u->getJoueur()->augmenterArgent(5);
-                                terrain[indexUnite + i] = nullptr;
-                            }
+            if (u->getCaracteristique().compare("Catapulte") != 0) { // Si c'est catapulte
+                // Attaque sur le tour
+                if (indexUnite + i == TAILLE_TERRAIN - 1 && estLibreCase(indexUnite + i)) {
+                    jDroite->estAttaque(u->getAtt());
+                }
 
-                            if (indexUnite + i + 1!= TAILLE_TERRAIN -1 && !estLibreCase(indexUnite+i+1)) {
-                                Unite *attaquee2 = terrain[indexUnite + i + 1];
-                                attaquee2->estAttaque(u->getAtt());
+                // Attaque sur unite
+                if (indexUnite + i <= TAILLE_TERRAIN-1 && !estLibreCase(indexUnite + i)) {
+                    Unite *attaquee = terrain[indexUnite + i];
+                    if (attaquee->getJoueur() != u->getJoueur()) { // Si ce n'est pas un allie
+                        attaquee->estAttaque(u->getAtt());
+                        // si hp = 0
+                        if (attaquee->getHp() <= 0) {
+                            std::string attaqueeType = attaquee->getCaracteristique();
+                            if (attaqueeType.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
+                            if (attaqueeType.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
+                            else u->getJoueur()->augmenterArgent(5);
 
-                                // si hp = 0
-                                if (attaquee2->getHp() <= 0) {
-                                    /* Remporte l'argent */
-                                    std::string attaqueeTypex = attaquee2->getCaracteristique();
-                                    if (attaqueeTypex.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
-                                    if (attaqueeTypex.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
-                                    else u->getJoueur()->augmenterArgent(5);
-                                    terrain[indexUnite + i] = nullptr;
-                                }
+                            terrain[indexUnite + i] = nullptr;
+                            // Si l'attaqueur est fantassin
+                            if (u->getCaracteristique().compare("Fantassin") == 0) u->devenirSuperSoldat();
 
-
-                            }
                             return true;
                         }
                     }
+                    else { return false; }
                 }
+            } else {
+                if (i != 1) {
+                    if (indexUnite + i <= TAILLE_TERRAIN-1 && !estLibreCase(indexUnite + i)) {
+                        Unite *attaquee = terrain[indexUnite + i];
+                        attaquee->estAttaque(u->getAtt());
+
+                        // si hp = 0
+                        if (attaquee->getHp() <= 0) {
+                            std::string attaqueeType = attaquee->getCaracteristique();
+                            if (attaqueeType.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
+                            if (attaqueeType.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
+                            else u->getJoueur()->augmenterArgent(5);
+                            terrain[indexUnite + i] = nullptr;
+                        }
+
+
+                        // Unitee 2
+                        if (indexUnite + i + 1!= TAILLE_TERRAIN -1 && !estLibreCase(indexUnite+i+1)) {
+                            Unite *attaquee2 = terrain[indexUnite + i + 1];
+                            attaquee2->estAttaque(u->getAtt());
+
+                            // si hp = 0
+                            if (attaquee2->getHp() <= 0) {
+                                std::string attaqueeTypex = attaquee2->getCaracteristique();
+                                if (attaqueeTypex.compare("Archer") == 0) u->getJoueur()->augmenterArgent(6);
+                                if (attaqueeTypex.compare("Catapulte") == 0) u->getJoueur()->augmenterArgent(10);
+                                else u->getJoueur()->augmenterArgent(5);
+                                terrain[indexUnite + i] = nullptr;
+                            }
+                        }
+                        return true;
+                    }
+                }
+                else { return false; }
             }
-
         }
-    }
-    return false;
-
 }
+
+else { // Sinon
+
+}*/
+//}
 
 
 
@@ -603,10 +588,10 @@ void Jeu::addUnite(Unite* u, int caseTerrain)
 string Jeu::afficher(){
     string ret = "|";
 
-	// Afficher les cases
-	for (int i = 0; i < TAILLE_TERRAIN; i++){
-		ret += "| ";
-		if (terrain[i] != nullptr) { // If not found
+    // Afficher les cases
+    for (int i = 0; i < TAILLE_TERRAIN; i++){
+        ret += "| ";
+        if (terrain[i] != nullptr) { // If not found
             if (terrain[i]->getJoueur() != jGauche)
                 ret += "d.";
             else
@@ -618,7 +603,7 @@ string Jeu::afficher(){
     }
     ret += "|\n";
 
-	// Afficher les informations sur le terrain
+    // Afficher les informations sur le terrain
     vector<Unite*> u1 = this->getUnites(jGauche);
     ret += "Joueur Gauche : \n  $";
     ret += to_string(jGauche->getArgent());
@@ -636,6 +621,7 @@ string Jeu::afficher(){
         ret += (*u)->getJoueur()->getPositionBase();
         ret += "\n\t\tHP : ";
         ret += to_string((*u)->getHp());
+        ret += "\n";
     }
     vector<Unite*> u2 = this->getUnites(jDroite);
     ret += "\nJoueur Droite: \n  $";
@@ -654,8 +640,8 @@ string Jeu::afficher(){
         ret += (*u)->getJoueur()->getPositionBase();
         ret += "\n\t\tHP : ";
         ret += to_string((*u)->getHp());
+        ret += "\n";
     }
-    ret += "\n";
     return ret;
 
 }
