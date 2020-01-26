@@ -20,17 +20,7 @@ class Jeu;
 class Joueur;
 
 
-/* 
 
-ON NE PEUT PAS COMPARER DES ENUM AVEC DES STRING
-
-enum Caracteristique {
-		Fantassin,
-		Archer,
-		Catapulte,
-		SuperSoldat
-};
-*/
 
 class Unite {
 

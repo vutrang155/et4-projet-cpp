@@ -18,8 +18,9 @@ ostream& operator<<(ostream& os, Jeu& jeu)
 }	
 
 ostream& operator<<(ostream& os, Unite& u) {
-		os << u.getCaracteristique() << " " << u.getId() << endl;
-		os << "HP : " << u.getHp() << endl;
+		os << u.getCaracteristique() << " " << u.getId();
+        os << ", Joueur " << u.getJoueur()->getPositionBase();
+		os << ", HP : " << u.getHp();
 		os << endl;
 
 		return os;
@@ -30,27 +31,60 @@ int main()
 {
 	Jeu* jeu = new Jeu();
 
-	Joueur* joueur = new Joueur(jeu,"Gauche");
+	Joueur* joueurGauche = new Joueur(jeu,"Gauche");
+
+    Joueur* joueurDroite = new Joueur(jeu,"Droite");
 
 	
-	Unite* u = new Unite(joueur,"Fantassin");
+	Unite* uGauche = new Unite(joueurGauche,"Fantassin");
 	
-    
-	jeu->addUnite(u,1);
+	jeu->addUnite(uGauche,1);
+
+
+    Unite* uDroite = new Unite(joueurDroite,"Fantassin");
 
     
+    
 
-	cout << "Case 1:"  << *(jeu->getUnite(1)) << endl;
+/*
+    bool aAvance = true;
+
+    while(aAvance)
+    {
+        aAvance = jeu->avancer(uGauche);
+    }
+
+    cout << "Case 10: "  << *(jeu->getUnite(10)) << endl; 
+*/
 
 
 
-	jeu->avancer(u,"->");
+/*
 
-	cout << "L'unité a avancé" << endl;;
+    jeu->addUnite(uDroite,3);
 
-	//cout << "Case 1:"  << *(jeu->getUnite(1)) << endl;
-	cout << "Case 2:"  << *(jeu->getUnite(2))
+	cout << "Case 1: "  << *(jeu->getUnite(1)) << endl;
+    cout << "Case 3: "  << *(jeu->getUnite(3)) << endl;
 
+
+
+	jeu->avancer(uDroite);
+
+    while
+
+	cout << "L'unité a avancé" << endl << endl;
+
+	cout << "Case 1: "  << *(jeu->getUnite(1)) << endl;
+	cout << "Case 2: "  << *(jeu->getUnite(2)) << endl;
+
+    jeu->avancer(uDroite);
+
+    cout << "L'unité a avancé" << endl << endl;
+
+	cout << "Case 1: "  << *(jeu->getUnite(1)) << endl;
+	cout << "Case 2: "  << *(jeu->getUnite(2)) << endl;
+
+*/
 
 
 

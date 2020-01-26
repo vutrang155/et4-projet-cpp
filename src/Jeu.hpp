@@ -66,7 +66,7 @@ class Jeu {
 		string afficher();
 
 
-		void avancer(Unite* u, string direction);
+		bool avancer(Unite* u);
 
 		bool attaquer(Unite* u, string direction, bool isAction1Effectueee);
 
