@@ -39,6 +39,9 @@ int main()
     return 0;
 
 }
+
+
+
 void testAvancer() {
     Joueur *joueurGauche = new Joueur("Gauche");
     Joueur *joueurDroite = new Joueur("Droite");
@@ -124,7 +127,6 @@ void testAttaquerCatapulte() {
     Joueur *joueurGauche = new Joueur("Gauche");
     Joueur *joueurDroite = new Joueur("Droite");
     Jeu *jeu = new Jeu(joueurGauche, joueurDroite);
-
     // Creer une unite pour le joueur 1
     Unite *uGauche = new Unite(joueurGauche, "Catapulte");
     jeu->addUnite(uGauche, 2);
@@ -141,4 +143,3 @@ void testAttaquerCatapulte() {
     cout << "attaque j1.1 -> j2.0\n";
     cout << jeu->afficher();
 }
-

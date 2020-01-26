@@ -22,13 +22,14 @@ class Jeu {
 	private :
 	
 		array<Unite*,TAILLE_TERRAIN> terrain;
-		Joueur* j1;
-		Joueur* j2;
+		Joueur* jGauche;
+		Joueur* jDroite;
 
 
 	public :
 		// Constructeur 
-		Jeu(Joueur* j1, Joueur* j2);
+		Jeu(Joueur* j, Joueur* jj);
+
 		// Destructeur 
 		~Jeu();
 
@@ -68,13 +69,21 @@ class Jeu {
 
 		bool avancer(Unite* u);
 
-		bool attaquer(Unite* u, bool isAction1Effectueee);
+		bool attaquer(Unite* u);
 
 		string getDirection(Joueur* j);
 
 		void tour(Joueur* j);
 
+		void action1(Unite* u);
+		
+		void action2(Unite* u);
+		
+		void action3(Unite* u);
+
 		//friend ostream& operator<<(ostream& os, Jeu& jeu);
+
+		
 		
 };
 

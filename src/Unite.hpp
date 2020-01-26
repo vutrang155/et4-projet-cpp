@@ -34,6 +34,7 @@ private :
     int att;
     int portee;
     int prix;
+    bool isAction1Effectuee;
 
 
 public :
@@ -54,6 +55,7 @@ public :
     int getHp();
     int getAtt();
     int getPortee();
+    bool getIsAction1Effectuee();
 
     /*
      * Setters
@@ -63,6 +65,7 @@ public :
     void setHp(int parHp);
     void setAtt(int parAtt);
     void setPortee(int parPortee);
+    void setIsAction1Effectuee(bool parIsAction1Effectuee);
 
     void devenirSuperSoldat();
 };
