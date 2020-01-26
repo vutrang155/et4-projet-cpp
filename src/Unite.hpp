@@ -54,6 +54,7 @@ public :
     string getCaracteristique();
     int getHp();
     int getAtt();
+    int getPrix();
     int getPortee();
     bool getIsAction1Effectuee();
 

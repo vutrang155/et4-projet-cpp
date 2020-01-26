@@ -32,11 +32,45 @@ ostream& operator<<(ostream& os, Unite& u) {
 void testAvancer();
 void testAttaquerFantassin();
 void testAttaquerCatapulte();
+void testAchat();
+
+
 int main()
 {
     //testAvancer();
-    testAttaquerCatapulte();
+    //testAttaquerCatapulte();
+
+    
+
+    testAchat();
+
     return 0;
+
+}
+
+void testAchat()
+{
+    Joueur *joueurGauche = new Joueur("Gauche");
+    Joueur *joueurDroite = new Joueur("Droite");
+    Jeu *jeu = new Jeu(joueurGauche, joueurDroite);
+
+    joueurDroite->augmenterArgent(10);
+
+    //for(int i = 0; i < 2; i++)
+    //{
+        
+        
+
+    jeu->achatUnite(joueurDroite);
+
+    cout << "ARGENT : " << joueurDroite->getArgent() << endl;
+
+
+        //cout << *(jeu->getUniteDuTerrain(0));
+        
+    //}
+    
+
 
 }
 
@@ -116,9 +150,9 @@ void testAttaquerFantassin() {
 
     cout << jeu->afficher();
     // Attaquer :
-    jeu->attaquer(uGauche, true);
-    jeu->attaquer(uGauche, true);
-    jeu->attaquer(uGauche, true);
+    jeu->attaquer(uGauche);
+    jeu->attaquer(uGauche);
+    jeu->attaquer(uGauche);
     cout << "attaque j1.1 -> j2.0\n";
     cout << jeu->afficher();
 }
@@ -139,7 +173,7 @@ void testAttaquerCatapulte() {
 
     cout << jeu->afficher();
     // Attaquer :
-    jeu->attaquer(uGauche, true);
+    jeu->attaquer(uGauche);
     cout << "attaque j1.1 -> j2.0\n";
     cout << jeu->afficher();
 }
