@@ -43,10 +43,7 @@ void Jeu::deroulement()
         jDroite->augmenterArgent(8);
 
         tour(jGauche);
-        
-
         tour(jDroite);
-
     }
 	
     if(jGauche->getHp() <= 0)
