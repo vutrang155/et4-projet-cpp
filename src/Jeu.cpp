@@ -480,21 +480,7 @@ bool Jeu::attaquer(Unite* u) {
     }
     return false;
 }
-/*}
-else return false;
-if(portee >= 0) { // Si Gauche
-        for(int i = 1; i <= portee; i++) {
-
-            if (u->getCaracteristique().compare("Catapulte") != 0) { // Si c'est catapulte
-                // Attaque sur le tour
-                if (indexUnite + i == TAILLE_TERRAIN - 1 && estLibreCase(indexUnite + i)) {
-                    jDroite->estAttaque(u->getAtt());
-                }
-
-                // Attaque sur unite
-                if (indexUnite + i <= TAILLE_TERRAIN-1 && !estLibreCase(indexUnite + i)) {
-                    Unite *attaquee = terrain[indexUnite + i];
-                    if (attaquee->getJoueur() != u->getJoueur()) { // Si ce n'est pas un allie
+/*} else return false; if(portee >= 0) { // Si Gauche for(int i = 1; i <= portee; i++) { if (u->getCaracteristique().compare("Catapulte") != 0) { // Si c'est catapulte // Attaque sur le tour if (indexUnite + i == TAILLE_TERRAIN - 1 && estLibreCase(indexUnite + i)) { jDroite->estAttaque(u->getAtt()); } // Attaque sur unite if (indexUnite + i <= TAILLE_TERRAIN-1 && !estLibreCase(indexUnite + i)) { Unite *attaquee = terrain[indexUnite + i]; if (attaquee->getJoueur() != u->getJoueur()) { // Si ce n'est pas un allie
                         attaquee->estAttaque(u->getAtt());
                         // si hp = 0
                         if (attaquee->getHp() <= 0) {
