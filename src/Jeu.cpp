@@ -699,7 +699,7 @@ string Jeu::afficher(){
     ret += "\nJoueur Droite: \n  $";
     ret += to_string(jDroite->getArgent());
     ret += "\t";
-    ret += jDroite->getHp();
+    ret += to_string(jDroite->getHp());
     ret += " Hp";
     ret += "\n";
     for (auto u = u2.begin(); u != u2.end(); u++) {
