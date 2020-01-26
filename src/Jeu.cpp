@@ -37,8 +37,7 @@ void Jeu::deroulement()
 {
 
 
-    achatUnite(jGauche);
-    achatUnite(jDroite);
+
     for(int cpt = 0; cpt < NOMBRE_TOURS; cpt++)
     {
         tour(jGauche);
