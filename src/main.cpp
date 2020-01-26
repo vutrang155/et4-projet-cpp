@@ -42,7 +42,6 @@ int main()
     //testAttaquerCatapulte();
     //testAttaquerFantassin();
     //testAttaquerCatapulte();
-
     //testAchat();
 
     
