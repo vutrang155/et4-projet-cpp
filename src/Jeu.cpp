@@ -93,24 +93,34 @@ bool Jeu::attaquer(Unite* u, string direction, bool isAction1Effectueee)
 }
 */
 
-void Jeu::avancer(Unite* u, string direction)
-{
+bool Jeu::avancer(Unite* u)
+{	
+
 	int indexUnite = getIndex(u);
 
-	if(direction.compare("->") == 0 && estLibreCase(indexUnite + 1))
+
+	if(u->getJoueur()->getPositionBase() == "Gauche" && estLibreCase(indexUnite + 1) && indexUnite != TAILLE_TERRAIN - 1)
 	{
 		terrain[indexUnite] = NULL;
 
 		terrain[indexUnite + 1] = u;
 
+		return true;
+
 	}
 
-	else if(direction.compare("<-") == 0 && estLibreCase(indexUnite - 1))
+
+	else if(u->getJoueur()->getPositionBase() == "Droite" && estLibreCase(indexUnite - 1) && indexUnite != 1)
 	{
 		terrain[indexUnite] = NULL;
 
 		terrain[indexUnite - 1] = u;
+
+		return true;
 	}
+
+
+	return false;
 
 }
 
