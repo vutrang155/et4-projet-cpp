@@ -5,20 +5,24 @@
 #include <string.h>
 #include <vector>
 
-#include "Joueur.hpp"
+
 
 
 
 using namespace std;
 
+class Joueur;
 
+class Unite;
 
 
 class Jeu {
 	private :
 		Unite** terrain;
-		Joueur j1;
-		Joueur j2;
+		Joueur* j1;
+		Joueur* j2;
+
+		
 	public :
 		// Constructeur 
 		Jeu();

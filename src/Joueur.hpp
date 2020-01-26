@@ -4,13 +4,13 @@
 #include <iostream>
 #include <string.h>
 
-#include "Unite.hpp"
+
 
 using namespace std;
 
 class Jeu;
 
-
+class Unite;
 
 
 class Joueur {
