@@ -30,11 +30,12 @@ ostream& operator<<(ostream& os, Unite& u) {
 
 
 void testAvancer();
-void testAttaquer();
+void testAttaquerFantassin();
+void testAttaquerCatapulte();
 int main()
 {
     //testAvancer();
-    testAttaquer();
+    testAttaquerCatapulte();
     return 0;
 
 }
@@ -90,7 +91,7 @@ cout << "Case 2: "  << *(jeu->getUnite(2)) << endl;
 
     cout << jeu->afficher();
 }
-void testAttaquer() {
+void testAttaquerFantassin() {
     Joueur *joueurGauche = new Joueur("Gauche");
     Joueur *joueurDroite = new Joueur("Droite");
     Jeu *jeu = new Jeu(joueurGauche, joueurDroite);
@@ -118,3 +119,26 @@ void testAttaquer() {
     cout << "attaque j1.1 -> j2.0\n";
     cout << jeu->afficher();
 }
+
+void testAttaquerCatapulte() {
+    Joueur *joueurGauche = new Joueur("Gauche");
+    Joueur *joueurDroite = new Joueur("Droite");
+    Jeu *jeu = new Jeu(joueurGauche, joueurDroite);
+
+    // Creer une unite pour le joueur 1
+    Unite *uGauche = new Unite(joueurGauche, "Catapulte");
+    jeu->addUnite(uGauche, 2);
+    Unite *uGauche2 = new Unite(joueurGauche, "Fantassin");
+    jeu->addUnite(uGauche2, 4);
+    Unite *uDroite = new Unite(joueurDroite, "Fantassin");
+    jeu->addUnite(uDroite, 5);
+    cout << jeu->afficher();
+
+
+    cout << jeu->afficher();
+    // Attaquer :
+    jeu->attaquer(uGauche, true);
+    cout << "attaque j1.1 -> j2.0\n";
+    cout << jeu->afficher();
+}
+
