@@ -141,7 +141,7 @@ void Jeu::achatUnite(Joueur* j)
     //Choix 1 : Acheter une unité ou non
     while(!aFaitSonChoix)
     {
-        cout << "Voulez-vous acheter une unité? 'O' --> Oui, 'n' --> Non" << endl;
+        cout << "Voulez-vous que le joueur " << j->getPositionBase() << " achète une unité? 'O' --> Oui, 'n' --> Non" << endl;
 
         cin >> choixAchatUnite;
 
@@ -173,7 +173,7 @@ void Jeu::achatUnite(Joueur* j)
     {
         while(1)
         {
-            cout << "Quelle unité voulez-vous acheter?" << endl;
+            cout << "Quelle unité voulez-vous que le joueur " << j->getPositionBase() << " achète?" << endl;
 
             cout << "1 --> Fantassin (prix : 10 pièces d'or)" << endl;
 
