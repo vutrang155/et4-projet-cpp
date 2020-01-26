@@ -17,8 +17,10 @@ using namespace std;
 
 
 // Constructeur 
-Jeu::Jeu() 
+Jeu::Jeu(Joueur* j, Joueur* jj)
 {
+    j1 = j;
+    j2 = jj;
 }
 // Destructeur 
 Jeu::~Jeu()
@@ -180,16 +182,15 @@ int Jeu::getIndex(Unite* u)
 vector<Unite*> Jeu::getUnites(Joueur* j)
 {
 	vector<Unite*> unitesJoueur;
-	std::cout << j->getPositionBase();
-	/*
+
 	for(int i = 0; i < TAILLE_TERRAIN; i++)
 	{
 	    if(terrain[i] != nullptr) { // Verifie la case est vide
-            //if (terrain[i]->getJoueur()->getPositionBase().compare(j->getPositionBase())) {
-                //unitesJoueur.push_back(terrain[i]);
-            //}
+            if (terrain[i]->getJoueur()->getPositionBase().compare(j->getPositionBase())) {
+                unitesJoueur.push_back(terrain[i]);
+            }
         }
-	}*/
+	}
 	return unitesJoueur;
 }	
 
@@ -232,11 +233,33 @@ string Jeu::afficher(){
     ret += "|\n";
 
 	// Afficher les informations sur le terrain
-    //vector<Unite*> u1 = this->getUnites(j1);
-    //vector<Unite*> u2 = this->getUnites(j2);
-    //std::cout << j1->getPositionBase();
-    //this->getUnites(j1);
-	ret += "Joueur 1 : \n";
+    vector<Unite*> u1 = this->getUnites(j1);
+    vector<Unite*> u2 = this->getUnites(j2);
+    ret += "Joueur 1 : \n";
+    for (auto u = u1.begin(); u != u1.end(); u++) {
+        ret += "\tj1.";
+        ret += to_string((*u)->getId());
+        ret += " : ";
+        ret += "\n\t\tType : ";
+        ret += (*u)->getCaracteristique();
+        ret += "\n\t\tPositionBase : ";
+        ret += (*u)->getJoueur()->getPositionBase();
+        ret += "\n\t\tHP : ";
+        ret += to_string((*u)->getHp());
+    }
+    ret += "Joueur 2 : \n";
+	for (auto u = u2.begin(); u != u2.end(); u++) {
+        ret += "\tj1.";
+        ret += to_string((*u)->getId());
+        ret += " : ";
+        ret += "\n\t\tType : ";
+        ret += (*u)->getCaracteristique();
+        ret += "\n\t\tPositionBase : ";
+        ret += (*u)->getJoueur()->getPositionBase();
+        ret += "\n\t\tHP : ";
+        ret += to_string((*u)->getHp());
+    }
+	ret += "\n";
 	return ret;
 
 }

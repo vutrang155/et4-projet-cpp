@@ -15,7 +15,6 @@ class Unite;
 
 class Joueur {
 	private :
-		Jeu* jeu;
 		int hp;
 		int argent;
 		string positionBase;
@@ -23,7 +22,7 @@ class Joueur {
 	public :
 		Joueur();
 
-		Joueur(Jeu* parJeu, string parPositionBase);
+		Joueur(string parPositionBase);
 		
 	
 	public :

@@ -28,7 +28,7 @@ class Jeu {
 
 	public :
 		// Constructeur 
-		Jeu();
+		Jeu(Joueur* j1, Joueur* j2);
 		// Destructeur 
 		~Jeu();
 

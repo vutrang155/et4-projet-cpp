@@ -16,7 +16,7 @@ using namespace std;
 
 
 
-Joueur::Joueur(Jeu* parJeu, string parPositionBase)
+Joueur::Joueur(string parPositionBase)
 {
 	if(parPositionBase.compare("Gauche") != 0 && parPositionBase.compare("Droite") != 0)
 	{
@@ -26,8 +26,6 @@ Joueur::Joueur(Jeu* parJeu, string parPositionBase)
 
 	positionBase = parPositionBase;
 	
-	jeu = parJeu; 
-
 	hp = POINTS_DE_VIE_JOUEUR_DEBUT;
 	
 	argent = 8;
@@ -81,13 +79,8 @@ int Joueur::getArgent()
 
 string Joueur::getPositionBase()
 {
-	return positionBase;
+	return this->positionBase;
 }
-
-
-
-
-
 
 void Joueur::setHp(int parHp)
 {

@@ -99,6 +99,9 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -110,7 +113,7 @@
       <option name="presentableId" value="Default" />
       <updated>1580027288884</updated>
       <workItem from="1580027290332" duration="185000" />
-      <workItem from="1580028090077" duration="5695000" />
+      <workItem from="1580028090077" duration="10000000" />
     </task>
     <servers />
   </component>
@@ -138,5 +141,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="540" y="72" key="ftp.server.browser/0.0.1280.680@0.0.1280.680" timestamp="1580028213520" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1580036039175">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1580036039175" />
   </component>
 </project>
