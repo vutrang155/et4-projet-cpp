@@ -45,7 +45,9 @@ void Jeu::deroulement()
     {
         tour(jGauche);
         tour(jDroite);
-    
+        if(jGauche->getHp() <= 0 || jDroite->getHp() <= 0) {
+            break;
+        }
     }
 
 
@@ -350,8 +352,15 @@ void Jeu::tour(Joueur* j)
     }
     std::cout << afficher();
 
-    achatUnite(j);
-    
+    if (jGauche->getHp() > 0 && jDroite->getHp() > 0){
+        achatUnite(j);
+    }
+    if (jGauche->getHp() <= 0) {
+        std::cout << "Jeu terminé, le joueur à gauche a gagné";
+    }
+    if (jDroite->getHp() <= 0) {
+        std::cout << "Jeu terminé, le joueur à droite a gagné";
+    }
 
 }
 
