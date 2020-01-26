@@ -39,6 +39,8 @@ void Jeu::deroulement()
 
     achatUnite(jGauche);
     achatUnite(jDroite);
+
+
     for(int cpt = 0; cpt < NOMBRE_TOURS; cpt++)
     {
         tour(jGauche);
@@ -349,6 +351,7 @@ void Jeu::tour(Joueur* j)
     std::cout << afficher();
 
     achatUnite(j);
+    
 
 }
 
@@ -560,7 +563,7 @@ bool Jeu::avancer(Unite* u)
 
     int indexUnite = getIndex(u);
 
-    if(u->getJoueur()->getPositionBase() == "Gauche" && estLibreCase(indexUnite + 1) && indexUnite != TAILLE_TERRAIN - 1)
+    if(u->getJoueur()->getPositionBase() == "Gauche" && estLibreCase(indexUnite + 1) && indexUnite != TAILLE_TERRAIN - 2)
     {
         terrain[indexUnite] = NULL;
         terrain[indexUnite + 1] = u;

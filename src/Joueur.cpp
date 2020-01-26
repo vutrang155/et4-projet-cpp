@@ -28,7 +28,7 @@ Joueur::Joueur(string parPositionBase)
 	
 	hp = POINTS_DE_VIE_JOUEUR_DEBUT;
 	
-	argent = 8;
+	argent = 20;
 }
 
 
