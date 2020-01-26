@@ -5,21 +5,9 @@ OBJ_DIR		:= $(BUILD)/o
 APP_DIR 	:= $(BUILD)/apps
 TARGET		:= main
 SRC := \
-$(wildcard src/*.cpp)
-#SRC := src/Unite.cpp src/Jeu.cpp src/Joueur.cpp
+	$(wildcard src/*.cpp) \
+
 OBJECTS := $(SRC:%.cpp=$(OBJ_DIR)/%.o) 
-OBJECTS_UNITE := $(SRC:Unite.cpp=$(OBJ_DIR)/Unite.o) 
-
-Unite: build $(APP_DIR)/$(TARGET)
-
-$(OBJ_DIR)/%.o: %.cpp
-	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
-
-$(APP_DIR)/$(TARGET): $(OBJECTS_UNITE)
-	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $(INCLUDE) $(LDFLAGS) -o $(APP_DIR)/$(TARGET) $(OBJECTS_UNITE)
-
 
 all: build $(APP_DIR)/$(TARGET)
 

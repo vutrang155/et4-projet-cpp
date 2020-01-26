@@ -10,12 +10,13 @@
 
 using namespace std;
 
-ostream& operator<<(ostream& os, Jeu& jeu) 
+/*ostream& operator<<(ostream& os, Jeu& jeu)
 {
 	os << jeu.afficher();
 
 	return os;
-}	
+}
+*/
 
 ostream& operator<<(ostream& os, Unite& u) {
 		os << u.getCaracteristique() << " " << u.getId() << endl;
@@ -32,27 +33,19 @@ int main()
 
 	Joueur* joueur = new Joueur(jeu,"Gauche");
 
-	
 	Unite* u = new Unite(joueur,"Fantassin");
-	
-    
 	jeu->addUnite(u,1);
 
-    
-
 	cout << "Case 1:"  << *(jeu->getUnite(1)) << endl;
-
-
 
 	jeu->avancer(u,"->");
 
 	cout << "L'unité a avancé" << endl;;
 
 	//cout << "Case 1:"  << *(jeu->getUnite(1)) << endl;
-	cout << "Case 2:"  << *(jeu->getUnite(2))
+	cout << "Case 2:"  << *(jeu->getUnite(2));
 
-
-
+	cout << jeu->afficher();
 
 	return 0;
 }
